@@ -750,43 +750,43 @@ char Controllino_ReadTimeDate(unsigned char *aDay, unsigned char *aWeekDay, unsi
  *
  *  @return Returns day 01 - 31, or -1 if the RTC library was not initialized before
  */
-char Controllino_GetDay();
+char Controllino_GetDay( void );
 
 /** @brief Reads out the weekday value from the RTC chip (RV-2123)
  *
  *  @return Returns weekday 00 - 06, or -1 if the RTC library was not initialized before
  */
-char Controllino_GetWeekDay();
+char Controllino_GetWeekDay( void );
 
 /** @brief Reads out the month value from the RTC chip (RV-2123)
  *
  *  @return Returns month 01 - 12, or -1 if the RTC library was not initialized before
  */
-char Controllino_GetMonth();
+char Controllino_GetMonth( void );
 
 /** @brief Reads out the year value from the RTC chip (RV-2123)
  *
  *  @return Returns year 00 - 99, or -1 if the RTC library was not initialized before
  */
-char Controllino_GetYear();
+char Controllino_GetYear( void );
 
 /** @brief Reads out the hours value from the RTC chip (RV-2123)
  *
  *  @return Returns hours 01 - 12, or 00 - 23 (depending of 12H/24H mode), or -1 if the RTC library was not initialized before
  */
-char Controllino_GetHour();
+char Controllino_GetHour( void );
 
 /** @brief Reads out the minutes value from the RTC chip (RV-2123)
  *
  *  @return Returns minutes 00 - 59, or -1 if the RTC library was not initialized before
  */
-char Controllino_GetMinute();
+char Controllino_GetMinute( void );
 
 /** @brief Reads out the seconds value from the RTC chip (RV-2123)
  *
  *  @return Returns seconds 00 - 59, or -1 if the RTC library was not initialized before
  */
-char Controllino_GetSecond();
+char Controllino_GetSecond( void );
 
 /** @brief Reads time and date from RTC chip and prints it on serial line
  *
@@ -795,7 +795,7 @@ char Controllino_GetSecond();
  *
  *  @return Returns seconds 0, or -1 if the RTC library was not initialized before
  */
-char Controllino_PrintTimeAndDate();
+char Controllino_PrintTimeAndDate( void );
 
 /** @brief Initialization of the SPI slave select pin for the RTC chip (RV-2123)
  *
@@ -803,7 +803,7 @@ char Controllino_PrintTimeAndDate();
  *
  *  @return Returns 0 when succeeded, or -2 if there is not selected proper CONTROLLINO board
  */
-char Controllino_RTCSSInit();
+char Controllino_RTCSSInit( void );
 
 /** @brief Control of SPI slave select pin for the RTC chip (RV-2123)
  *
@@ -820,7 +820,7 @@ char Controllino_SetRTCSS(char mode);
  *
  *  @return Always returns 0 
  */
-char Controllino_RS485Init();
+char Controllino_RS485Init( void );
 
 /** @brief Control of RS485 bus RE signal 
  *
