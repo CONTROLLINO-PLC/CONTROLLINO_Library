@@ -27,7 +27,7 @@
 
   IMPORTANT INFORMATION!
   Please, select proper target board in Tools->Board->Controllino MAXI/MEGA before Upload to your CONTROLLINO.
-  (Please, refer to https://controllino.biz/programming/ if you do not see the CONTROLLINOs in the Arduino IDE menu Tools->Board.)
+  (Please, refer to https://github.com/CONTROLLINO-PLC/CONTROLLINO_Library if you do not see the CONTROLLINOs in the Arduino IDE menu Tools->Board.)
 
   This example sketch does not require any additional parts, equipment, wires or power supply. Just your CONTROLLINO, USB cable (type A-B) and a PC.
  
@@ -35,6 +35,8 @@
   by Lukas
 
   https://controllino.biz/
+
+  (Check https://github.com/CONTROLLINO-PLC/CONTROLLINO_Library for the latest CONTROLLINO related software stuff.)
 */
 
 // the setup function runs once when you press reset (CONTROLLINO RST button) or connect the CONTROLLINO to the PC
@@ -83,5 +85,5 @@ void loop() {
 
 /* End of the example. Visit us at https://controllino.biz/ or contact us at info@controllino.biz if you have any questions or troubles. */
 
-/* 2016-12-14: The sketch was successfully tested with Arduino 1.6.13, Controllino Library 1.0.3 and CONTROLLINO MAXI and MEGA. */
+/* 2016-12-14: The sketch was successfully tested with Arduino 1.6.13, Controllino Library 1.0.0 and CONTROLLINO MAXI and MEGA. */
 
