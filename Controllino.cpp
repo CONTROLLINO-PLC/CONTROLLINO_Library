@@ -261,7 +261,7 @@ char Controllino_ReadTimeDate(unsigned char *aDay, unsigned char *aWeekDay, unsi
 	}
 }
 
-char Controllino_GetDay()
+char Controllino_GetDay( void )
 {
 	unsigned char day;
 	if (Controllino_ReadTimeDate(&day, NULL, NULL, NULL, NULL, NULL, NULL) >= 0)
@@ -274,7 +274,7 @@ char Controllino_GetDay()
 	}
 }
 
-char Controllino_GetWeekDay()
+char Controllino_GetWeekDay( void )
 {
 	unsigned char weekday;
 	if (Controllino_ReadTimeDate(NULL, &weekday, NULL, NULL, NULL, NULL, NULL) >= 0)
@@ -287,7 +287,7 @@ char Controllino_GetWeekDay()
 	}
 }
 
-char Controllino_GetMonth()
+char Controllino_GetMonth( void )
 {
 	unsigned char month;
 	if (Controllino_ReadTimeDate(NULL, NULL, &month, NULL, NULL, NULL, NULL) >= 0)
@@ -300,7 +300,7 @@ char Controllino_GetMonth()
 	}
 }
 
-char Controllino_GetYear()
+char Controllino_GetYear( void )
 {
 	unsigned char year;
 	if (Controllino_ReadTimeDate(NULL, NULL, NULL, &year, NULL, NULL, NULL) >= 0)
@@ -313,7 +313,7 @@ char Controllino_GetYear()
 	}
 }
 
-char Controllino_GetHour()
+char Controllino_GetHour( void )
 {
 	unsigned char hour;
 	if (Controllino_ReadTimeDate(NULL, NULL, NULL, NULL, &hour, NULL, NULL) >= 0)
@@ -327,7 +327,7 @@ char Controllino_GetHour()
 }
 
 
-char Controllino_GetMinute()
+char Controllino_GetMinute( void )
 {
 	unsigned char minute;
 	if (Controllino_ReadTimeDate(NULL, NULL, NULL, NULL, NULL, &minute, NULL) >= 0)
@@ -340,7 +340,7 @@ char Controllino_GetMinute()
 	}
 }
 
-char Controllino_GetSecond()
+char Controllino_GetSecond( void )
 {
 	unsigned char second;
 	if (Controllino_ReadTimeDate(NULL, NULL, NULL, NULL, NULL, NULL, &second) >= 0)
@@ -353,7 +353,7 @@ char Controllino_GetSecond()
 	}
 }
 
-char Controllino_PrintTimeAndDate()
+char Controllino_PrintTimeAndDate( void )
 {
 	unsigned char day, weekday, month, year, hour, minute, second;
 	if (Controllino_ReadTimeDate(&day, &weekday, &month, &year, &hour, &minute, &second) >= 0)
@@ -379,7 +379,7 @@ char Controllino_PrintTimeAndDate()
 
 #if defined(CONTROLLINO_MAXI) || defined(CONTROLLINO_MEGA)
 
-char Controllino_RS485Init()
+char Controllino_RS485Init( void )
 {
 	//set PORTJ pin 5,6 direction (RE,DE)
 	DDRJ |= B01100000;
@@ -422,7 +422,7 @@ char Controllino_SwitchRS485DE(char mode)
 }
 #endif
 
-char Controllino_RTCSSInit()
+char Controllino_RTCSSInit( void )
 {
 	#if defined(CONTROLLINO_MAXI) || defined(CONTROLLINO_MEGA)
 	//set PORTJ pin 2 RTC SS direction and LAN SS (PORTJ pin 3) as well for safety
