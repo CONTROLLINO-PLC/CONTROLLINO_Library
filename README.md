@@ -1,4 +1,4 @@
-# CONTROLLINO
+﻿# CONTROLLINO
 
 ### FIRST SOFTWARE OPEN-SOURCE PLC (ARDUINO compatible)
 https://controllino.biz/
@@ -11,6 +11,8 @@ This GitHub repository contains all you need to start with CONTROLLINO devices p
   * See our [Reference manual](#reference-manual)
 * Examples how to use special features of the CONTROLLINOs
   * When the library is installed in the Arduino IDE, you can find them i the File->Examples menu
+* Frequently Asked Questions
+  * See our [FAQ](#faq)
 
 Please note that CONTROLLINO exists in [3 different variants](#controllino-mini).
 
@@ -226,3 +228,36 @@ https://raw.githubusercontent.com/CONTROLLINO-PLC/CONTROLLINO_Library/master/Boa
  * In the Boards Manager type CONTROLLINO into the filter text box and search for CONTROLLINO boards 
  * When found, select the latest version and install it. The installation process should be fully automated
  * When finished - check in Tools–>Board: “Foo“–> menu that you can see the CONTROLLINO boards there
+ 
+ 
+## FAQ
+
+**1. Automated installation through Arduino Board Manager gets 403 Forbidden in Arduino IDE for OSX**
+
+*Answer: This issue was reported for Arduino IDE 1.6.11. In older versions - e.g. 1.6.8 it worked fine. With the latest Arduino IDE version (1.8.1) it also works fine.* 
+
+**2. AnalogRead always returns 806 instead of 1023**
+
+Question: A0 should read 0 and 1023 (its connected to D0 pin), but instead it reads 0 and 806. Is there anything wrong with the voltage reference or am I missing something? Btw, power supply is 24 volts.
+
+*Answer: This is caused by the fact that CONTROLLINO actually doesn't have maximum of 24V. The maximum for 24V setting is close to 30V. So, value 1023 will be returned when you would get close to 30V power supply. See our example AnalogInputs.*
+
+**3. Digital 20 - Digital 23 mapping**
+
+Question: Pins Digital 20 - Digital 23 seem not to be implemented to use with digitalWrite, from Arduino lib. Is it possible to use those pins with your library? I understand, that these pins don't have an according alias on arduino, but still. I would really like to somehow circumvent using this syntax in order to set Digital 20.
+`PORTD = B11110111`
+
+*Answer: It is correct. Our library does not support these digital outputs as we have tried to do not touch Arduino Core functionality. But it may be a point for further releases...
+I am afraid that you have to use this "PORTD" way to control these pins. Please check example sketch PortManipulation in the Arduino IDE for more details.*
+
+**4. CONTROLLINO boards not showing with arduino IDE 1.6.12**
+
+Question: Loading the Controllino Library into the Arduino 1.6.12 IDE does not show up the Controllino boards on the board types list.
+
+*Answer: You also need to install the "CONTROLLINO Hardware" by the Boards Manager.*
+
+**5. How to burn bootloader**
+
+Question: Is it possible to burn bootloader in Controllino? I want to add possibility for OTA updates by Ethernet.
+
+*Answer: Yes, it is possible. We are fully compatible with Arduino! All ICSP signals are available at the X1 pinheader connector of your CONTROLLINO. See https://controllino.biz/downloads/ for more details. You just need ICSP programmer and six wires to handle that.*
