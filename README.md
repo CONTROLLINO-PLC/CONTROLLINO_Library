@@ -261,3 +261,9 @@ Question: Loading the Controllino Library into the Arduino 1.6.12 IDE does not s
 Question: Is it possible to burn bootloader in Controllino? I want to add possibility for OTA updates by Ethernet.
 
 *Answer: Yes, it is possible. We are fully compatible with Arduino! All ICSP signals are available at the X1 pinheader connector of your CONTROLLINO. See https://controllino.biz/downloads/ for more details. You just need ICSP programmer and six wires to handle that.*
+
+**6. Unable to locate (obsolete) hardware description files on GitHub**
+
+Question: My Arduino IDE gives me following error message: "Error downloading ....githubusercontent.com/Controllino/ControllinoHardware/master/package_ControllinoHardware_index.json". Is it unable to locate hardware description files?
+
+*Answer: Our GitHub repository has been moved to a new location, therefore this path is no longer valid. Please, follow our new [Installation guide](#installation-guide).*
