@@ -12,7 +12,7 @@
 				{
 					"name": "CONTROLLINO Boards",
 					"architecture": "avr",
-					"version": "1.0.0",
+					"version": "1.1.0",
 					"category": "Contributed",
 					"url": "https://github.com/CONTROLLINO-PLC/CONTROLLINO_Library/raw/master/Boards/ControllinoHW.zip",
 					"archiveFileName": "ControllinoHW.zip",
@@ -23,8 +23,8 @@
 					},
 					"boards": [
 						{ "name": "MINI" },
-						{ "name": "MAXI Automation" },
 						{ "name": "MAXI" },
+						{ "name": "MAXI Automation" },
 						{ "name": "MEGA" }
 					],
 					"toolsDependencies": [

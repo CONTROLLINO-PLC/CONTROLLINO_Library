@@ -1,4 +1,4 @@
-﻿# CONTROLLINO
+# CONTROLLINO
 
 ### FIRST SOFTWARE OPEN-SOURCE PLC (ARDUINO compatible)
 https://controllino.biz/
@@ -14,7 +14,7 @@ This GitHub repository contains all you need to start with CONTROLLINO devices p
 * Frequently Asked Questions
   * See our [FAQ](#faq)
 
-Please note that CONTROLLINO exists in [3 different variants](#controllino-mini).
+Please note that CONTROLLINO exists in [4 different variants](#controllino-mini).
 
 ### CONTROLLINO MINI
 * Microcontroller: ATmega328
@@ -41,6 +41,23 @@ Please note that CONTROLLINO exists in [3 different variants](#controllino-mini)
 * 10x Relays Outputs – 230V / 6A
 * 12x Analog/Digital Inputs
 * 12x Digital Outputs – 2A @12V or 24V
+
+### CONTROLLINO MAXI Automation
+* Microcontroller: ATmega2560
+* Clock Speed: 16 MHz
+* RTC
+* Ethernet Connector
+* 2x serial Interface
+* 1x I2C Interface
+* 1x SPI Interface
+* Input current Max. 20A
+* Input voltage 24V
+* 10x Relays Outputs – 230V / 6A
+* 12x Analog Inputs
+* 6x Digital Inputs (2x Interrupt)
+* 8x Digital Outputs – 2A @ 24V
+* 2x 0-10V Inputs
+* 2x 0-10V/0-20mA Outputs
 
 ### CONTROLLINO MEGA
 * Microcontroller: ATmega2560

@@ -1,5 +1,5 @@
 #######################################
-# Syntax Coloring Map For Controllino
+# Syntax Coloring Map For CONTROLLINO
 #######################################
 
 #######################################
@@ -7,6 +7,11 @@
 #######################################
 
 Controllino	KEYWORD1
+CONTROLLINO	KEYWORD1  
+CONTROLLINO_MINI	LITERAL1 
+CONTROLLINO_MAXI	LITERAL1 
+CONTROLLINO_MAXI_AUTOMATION	LITERAL1
+CONTROLLINO_MEGA	LITERAL1  
 
 #######################################
 # Methods and Functions (KEYWORD2)

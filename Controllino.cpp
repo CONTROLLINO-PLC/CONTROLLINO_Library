@@ -8,8 +8,8 @@
  *  https://www.arduino.cc/
  *
  *  @author CONTROLLINO design team
- *  @version   1.0.0
- *  @date      2017-01-05
+ *  @version   1.1.0
+ *  @date      2017-01-24
  *  @bug No known bugs.
  */
 
@@ -424,7 +424,7 @@ char Controllino_SwitchRS485DE(char mode)
 
 char Controllino_RTCSSInit( void )
 {
-	#if defined(CONTROLLINO_MAXI) || defined(CONTROLLINO_MEGA)
+	#if defined(CONTROLLINO_MAXI) || defined(CONTROLLINO_MEGA) || defined(CONTROLLINO_MAXI_AUTOMATION)
 	//set PORTJ pin 2 RTC SS direction and LAN SS (PORTJ pin 3) as well for safety
 	DDRJ |= B00001100;	
 	// pinMode(CONTROLLINO_PIN_HEADER_DIGITAL_OUT_00,OUTPUT);  // DEBUG
@@ -444,7 +444,7 @@ char Controllino_RTCSSInit( void )
 
 char Controllino_SetRTCSS(char mode)
 {
-	#if defined(CONTROLLINO_MAXI) || defined(CONTROLLINO_MEGA)
+	#if defined(CONTROLLINO_MAXI) || defined(CONTROLLINO_MEGA) || defined(CONTROLLINO_MAXI_AUTOMATION)
 	if (mode == 0)
 	{
 		// set RTC SS on LOW
