@@ -16,13 +16,14 @@
 					"category": "Contributed",
 					"url": "https://github.com/CONTROLLINO-PLC/CONTROLLINO_Library/raw/master/Boards/ControllinoHW.zip",
 					"archiveFileName": "ControllinoHW.zip",
-					"checksum": "SHA-256:0ca4811376820e2cfad4a6f840f9a05935efdbc7ed79d021c91b008c87cfd234",
+					"checksum": "SHA-256:2ed3f3eaadb27da7e1a75063536c9dba3609e26d20c7ceee638cbfde93e10ec1",
 					"size": "216717",
 					"help": {
 						"online": "https://github.com/CONTROLLINO-PLC/CONTROLLINO_Library/issues"
 					},
 					"boards": [
 						{ "name": "MINI" },
+						{ "name": "MAXI Automation" },
 						{ "name": "MAXI" },
 						{ "name": "MEGA" }
 					],
