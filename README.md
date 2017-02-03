@@ -1,3 +1,15 @@
+
+##:exclamation: NEW BOARD "CONTROLLINO MAXI Automation" AVAILABLE :exclamation:
+
+Check out the newest board [here](#controllino-maxi-automation)!
+
+Having trouble compiling your code:question:
+* Upon releasing new version major changes have been made in board 1.0.1 and it's not compatible with library 1.0.0.
+* Arduino IDE has trouble deleting old board's version from your PC and it must be deleted manually.
+  * (Windows) To delete boards, press Win+R and type in this path: "%LOCALAPPDATA%\Arduino15\packages" (Arduino IDE 1.6.6 and later) or "%APPDATA%\Arduino15\packages" (Arduino IDE 1.6.5r5 and previous). New Windows Explorer window will open. Delete directory "CONTROLLINO Boards". Now you can install the newest board in Arduino IDE.
+  * (Linux) To delete boards, go to: "/home/(username)/.arduino15/packages" (a.k.a. ~/.arduino15/packages) and delete directory "CONTROLLINO Boards". Now you can install the newest board in Arduino IDE.
+  * (Mac OS X) To delete boards, go to: "/Users/(username)/Library/Arduino15/packages" and delete directory "CONTROLLINO Boards". Now you can install the newest board in Arduino IDE.
+
 # CONTROLLINO
 
 ### FIRST SOFTWARE OPEN-SOURCE PLC (ARDUINO compatible)
