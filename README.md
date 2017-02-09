@@ -296,3 +296,20 @@ Question: Is it possible to burn bootloader in Controllino? I want to add possib
 Question: My Arduino IDE gives me following error message: "Error downloading ....githubusercontent.com/Controllino/ControllinoHardware/master/package_ControllinoHardware_index.json". Is it unable to locate hardware description files?
 
 *Answer: Our GitHub repository has been moved to a new location, therefore this path is no longer valid. Please, follow our new [Installation guide](#installation-guide).*
+
+**7. Pin header SPI bus communication is not working properly (MAXI, MEGA)**
+
+Question: I am not using RTC and/or Ethernet built in CONTROLLINO MAXI/MEGA. I am trying to use SPI bus available at pinheader, but it sometimes work and sometimes not. Is there any conflict with RTC chip and Etherent chip connected to the same SPI bus, even if I am not using them?
+
+*Answer: When SS pins PJ2 (RTC) and PJ3 (Wiznet) are not properly handled, it may happen that the floating pin is recognized as a valid chip select signal and the RTC chip or Wiznet chip is accidentally connected to SPI bus - MISO signal.*
+*The solution is quite easy - if a user wants to use the SPI bus signals as GPIOs at the pin header, s/he must properly setup the Slave Select signals for the RTC and Wiznet.* 
+*This may cause confusion of the SPI communication at the pinheader and also strange voltages at MISO (pin header X1) when using it as GPIO.*
+ 
+*These three lines in your sketch setup function should do the job:*
+ 
+`DDRJ   | = B00001100;` 
+
+`PORTJ &= B11111011;`
+
+`PORTJ | = B00001000;`
+
