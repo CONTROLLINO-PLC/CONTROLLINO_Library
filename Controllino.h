@@ -11,8 +11,8 @@
  *  https://www.arduino.cc/
  *
  *  @author CONTROLLINO design team
- *  @version   1.1.0
- *  @date      2017-02-02
+ *  @version   1.1.1
+ *  @date      2017-03-21
  *  @bug No known bugs.
  */
 
@@ -487,11 +487,11 @@
   
   #define CONTROLLINO_UART_RX 17
   
-  #define CONTROLLINO_PIN_HEADER_INT_01 18
-  #define CONTROLLINO_SCREW_TERMINAL_INT_01 18
+  #define CONTROLLINO_PIN_HEADER_INT_00 18
+  #define CONTROLLINO_SCREW_TERMINAL_INT_00 18
   
-  #define CONTROLLINO_PIN_HEADER_INT_02 19
-  #define CONTROLLINO_SCREW_TERMINAL_INT_02 19
+  #define CONTROLLINO_PIN_HEADER_INT_01 19
+  #define CONTROLLINO_SCREW_TERMINAL_INT_01 19
   
   #define CONTROLLINO_PIN_HEADER_SDA 20
   
@@ -665,8 +665,8 @@
   #define CONTROLLINO_AI12 68
   #define CONTROLLINO_AI13 69
   
-  #define CONTROLLINO_IN1 18
-  #define CONTROLLINO_IN2 19
+  #define CONTROLLINO_IN0 18
+  #define CONTROLLINO_IN1 19
   
   #define CONTROLLINO_R0 22
   #define CONTROLLINO_R1 23
