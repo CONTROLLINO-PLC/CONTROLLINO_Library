@@ -1,4 +1,4 @@
-## CONTROLLINO custom bootloaders
+## CONTROLLINO customized bootloaders
 * Here you can find our customized bootloaders for all CONTROLLINO variants. Please select your variant, download the hex file and follow the guide.
 * Atmel Studio is for free and you can download it from the [Atmel web pages](http://www.atmel.com/).
 
