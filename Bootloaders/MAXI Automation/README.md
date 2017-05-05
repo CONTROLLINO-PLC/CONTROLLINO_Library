@@ -25,7 +25,7 @@
 
    Device - ATmega2560, Interface - ISP, verify signature and voltage!
 
-6. Select Tools-Device programming - Memories. In flash part find path to Bootloader_CONTROLLINO_MAXI.hex dwonloaded from GitHub.
+6. Select Tools-Device programming - Memories. In flash part find path to Bootloader_CONTROLLINO_MAXI_Automation.hex dwonloaded from GitHub.
 
 7. Click program.
 
