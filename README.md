@@ -1,4 +1,3 @@
-
 ## :exclamation: NEW BOARD "CONTROLLINO MAXI Automation" AVAILABLE :exclamation:
 
 Check out the newest board [here](#controllino-maxi-automation)!
@@ -24,7 +23,7 @@ This GitHub repository contains all you need to start with CONTROLLINO devices p
 * Examples how to use special features of the CONTROLLINOs
   * When the library is installed in the Arduino IDE, you can find them i the File->Examples menu
 * Customized bootloaders for all CONTROLLINO variants
-  * See Bootloaders folder and follow the provided guides
+  * See [Bootloaders](/Bootloaders) folder and follow the provided guides
 * Frequently Asked Questions
   * See our [FAQ](#faq)
 
