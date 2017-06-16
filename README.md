@@ -112,7 +112,6 @@ For example, for MINI we have defined following aliases:
 ` CONTROLLINO_D6`
 
 ` CONTROLLINO_D7`
-
  
 ` CONTROLLINO_A0`
 
@@ -154,7 +153,6 @@ It should be added automatically with the `#include <Controllino.h>`.
  *  @param aMinute minutes 00 - 59
  *  @param aSecond seconds 00 - 59
  *  @return Returns 0 when succeeded, or -1 if the RTC library was not initialized before
- *  
 `char Controllino_SetTimeDate(unsigned char aDay, unsigned char aWeekDay,unsigned char aMonth, unsigned char aYear, unsigned char aHour, unsigned char aMinute, unsigned char aSecond);`
 
 ##### Reads out the time and date from the RTC chip (RV-2123)
@@ -167,49 +165,40 @@ It should be added automatically with the `#include <Controllino.h>`.
  *  @param aMinute pointer to minutes 00 - 59
  *  @param aSecond pointer to seconds 00 - 59
  *  @return Returns 0 when succeeded, or -1 if the RTC library was not initialized before
- *  
 `char Controllino_ReadTimeDate(unsigned char *aDay, unsigned char *aWeekDay, unsigned char *aMonth, unsigned char *aYear, unsigned char *aHour, unsigned char *aMinute, unsigned char *aSecond)`
 
 ##### Reads out the day value from the RTC chip (RV-2123)
  *  @return Returns day 01 - 31, or -1 if the RTC library was not initialized before
- *  
 `char Controllino_GetDay( void )`
 
 ##### Reads out the weekday value from the RTC chip (RV-2123)
  *  @return Returns weekday 00 - 06, or -1 if the RTC library was not initialized before
- *  
 `char Controllino_GetWeekDay( void )`
 
 #####  Reads out the month value from the RTC chip (RV-2123)
  *  @return Returns month 01 - 12, or -1 if the RTC library was not initialized before
- *  
 `char Controllino_GetMonth( void )`
 
 ##### Reads out the year value from the RTC chip (RV-2123)
  *  @return Returns year 00 - 99, or -1 if the RTC library was not initialized before
- *  
 `char Controllino_GetYear( void )`
 
 ##### Reads out the hours value from the RTC chip (RV-2123)
  *  @return Returns hours 01 - 12, or 00 - 23 (depending of 12H/24H mode), or -1 if the RTC library was not initialized before
- *  
 `char Controllino_GetHour( void )`
 
 ##### Reads out the minutes value from the RTC chip (RV-2123)
  *  @return Returns minutes 00 - 59, or -1 if the RTC library was not initialized before
- *  
 `char Controllino_GetMinute( void )`
 
 ##### Reads out the seconds value from the RTC chip (RV-2123)
  *  @return Returns seconds 00 - 59, or -1 if the RTC library was not initialized before
- *  
 `char Controllino_GetSecond( void )`
 
 ##### Reads time and date from RTC chip and prints it on serial line
  *  This function expects that the Serial was initialized before calling it.
  *  Format is DD/MM/YY   HH:MM:SS
  *  @return Returns seconds 0, or -1 if the RTC library was not initialized before
- *  
 `char Controllino_PrintTimeAndDate( void )`
 
 
@@ -220,19 +209,16 @@ Please note that RS485 interface is present ony in MAXI and MEGA variants.
 ##### Initialization of the RS485 bus
  *  Serial3 still needs to be initialized separately. This only inits RE and DE pins.
  *  @return Always returns 0 
- *  
 `char Controllino_RS485Init( void )`
 
 ##### Control of RS485 bus RE signal 
  *  @param mode 0 for RS485 Receive Enable Active, 1 for Receive Enable Inactive 
  *  @return Returns 0 when succeeded, -1 for unsupported mode
- *  
 `char Controllino_SwitchRS485RE(char mode)`
 
 ##### Control of RS485 bus DE signal 
  *  @param mode 0 for RS485 Data Transmission Enable Inactive, 1 for Data Transmission Enable Active
  *  @return Returns 0 when succeeded, -1 for unsupported mode
- *  
 `char Controllino_SwitchRS485DE(char mode)`
 
 ## Installation guide
