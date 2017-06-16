@@ -1,7 +1,7 @@
 {
 	"packages": [
 		{
-			"name": "CONTROLLINO Boards",
+			"name": "CONTROLLINO_Boards",
 			"maintainer": "CONTROLLINO",
 			"websiteURL": "https://controllino.biz/",
 			"email": "info@controllino.biz",
@@ -12,11 +12,11 @@
 				{
 					"name": "CONTROLLINO Boards",
 					"architecture": "avr",
-					"version": "1.1.0",
+					"version": "2.0.0",
 					"category": "Contributed",
 					"url": "https://github.com/CONTROLLINO-PLC/CONTROLLINO_Library/raw/master/Boards/ControllinoHW.zip",
 					"archiveFileName": "ControllinoHW.zip",
-					"checksum": "SHA-256:2ed3f3eaadb27da7e1a75063536c9dba3609e26d20c7ceee638cbfde93e10ec1",
+					"checksum": "SHA-256:d7f79ce738b0608bec3a340252aa79aaa6414b430b0945d5c770601bcb7b47af",
 					"size": "216717",
 					"help": {
 						"online": "https://github.com/CONTROLLINO-PLC/CONTROLLINO_Library/issues"
@@ -31,12 +31,12 @@
 						{
 							"packager": "arduino",
 							"name": "avr-gcc",
-							"version": "4.8.1-arduino5"
+							"version": "4.9.2-atmel3.5.3-arduino2"
 						},
 						{
 							"packager": "arduino",
 							"name": "avrdude",
-							"version": "6.0.1-arduino5"
+							"version": "6.3.0-arduino8"
 						}
 					]
 				}

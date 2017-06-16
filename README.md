@@ -1,13 +1,12 @@
-## :exclamation: NEW BOARD "CONTROLLINO MAXI Automation" AVAILABLE :exclamation:
+## :exclamation: UPGRADE TO NEW BSP VERSION 2.0.0 AVAILABLE :exclamation:
 
-Check out the newest board [here](#controllino-maxi-automation)!
+### If you want to upgrade your CONTROLLINO BSP go to your Arduino IDE Boards Manager!
 
-Having trouble compiling your code:question:
-* Upon releasing new version major changes have been made in board 1.0.1 and it's not compatible with library 1.0.0.
-* Arduino IDE has trouble deleting old board's version from your PC and it must be deleted manually.
-  * (Windows) To delete boards, press Win+R and type in this path: "%LOCALAPPDATA%\Arduino15\packages" (Arduino IDE 1.6.6 and later) or "%APPDATA%\Arduino15\packages" (Arduino IDE 1.6.5r5 and previous). New Windows Explorer window will open. Delete directory "CONTROLLINO Boards". Now you can install the newest board in Arduino IDE.
-  * (Linux) To delete boards, go to: "/home/(username)/.arduino15/packages" (a.k.a. ~/.arduino15/packages) and delete directory "CONTROLLINO Boards". Now you can install the newest board in Arduino IDE.
-  * (Mac OS X) To delete boards, go to: "/Users/(username)/Library/Arduino15/packages" and delete directory "CONTROLLINO Boards". Now you can install the newest board in Arduino IDE.
+We have prepared a new version of BSP featuring following changes and upgrades:
+* Compiler upgraded from version 4.8.1-arduino5 to 4.9.2-atmel3.5.3-arduino2
+* Avrdude upgraded from version 6.0.1-arduino5 to 6.3.0-arduino8
+* Arduino Core library upgraded to the latest version (contained in Arduino IDE 1.8.3)
+* Root folder for BSP no longer contains spaces (fixed issue while compiling from command line)
 
 # CONTROLLINO
 
@@ -314,3 +313,8 @@ Question: I am not using RTC and/or Ethernet built in CONTROLLINO MAXI/MEGA. I a
 
 `PORTJ | = B00001000;`
 
+**8. CONTROLLINO MINI A6, A7 inputs**
+
+Question: It is not possible to read digital value of the A6 and A7 inputs on CONTROLLINO MINI.
+
+*Answer: These pins are analogue inputs only and it is not possible to read their digital status, because of the microprocessor architecture. The only chance is to read out their analogue value and distinguish by some threshold value.*
