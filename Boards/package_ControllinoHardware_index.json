@@ -12,12 +12,12 @@
 				{
 					"name": "CONTROLLINO Boards",
 					"architecture": "avr",
-					"version": "2.0.0",
+					"version": "2.0.1",
 					"category": "Contributed",
 					"url": "https://github.com/CONTROLLINO-PLC/CONTROLLINO_Library/raw/master/Boards/ControllinoHW.zip",
 					"archiveFileName": "ControllinoHW.zip",
-					"checksum": "SHA-256:d7f79ce738b0608bec3a340252aa79aaa6414b430b0945d5c770601bcb7b47af",
-					"size": "216717",
+					"checksum": "SHA-256:4FDAA6E210F68CFB77C5247F7ADE7C55D0065A2B23D6CD27747A932D0E1D8F43",
+					"size": "240312",
 					"help": {
 						"online": "https://github.com/CONTROLLINO-PLC/CONTROLLINO_Library/issues"
 					},
