@@ -1,4 +1,4 @@
-## :exclamation: UPGRADE TO NEW BSP VERSION 2.0.0 AVAILABLE :exclamation:
+## :exclamation: UPGRADE TO NEW BSP VERSION 2.0.1 AVAILABLE :exclamation:
 
 ### If you want to upgrade your CONTROLLINO BSP go to your Arduino IDE Boards Manager!
 
@@ -7,6 +7,10 @@ We have prepared a new version of BSP featuring following changes and upgrades:
 * Avrdude upgraded from version 6.0.1-arduino5 to 6.3.0-arduino8
 * Arduino Core library upgraded to the latest version (contained in Arduino IDE 1.8.3)
 * Root folder for BSP no longer contains spaces (fixed issue while compiling from command line)
+
+If you will face some compilation errors after the update, please check your 
+c:\Users\UserName\AppData\Local\Arduino15\packages\CONTROLLINO_Boards\hardware\avr\
+folder and remove all previous obsolete versions (e.g. 2.0.0).
 
 # CONTROLLINO
 
