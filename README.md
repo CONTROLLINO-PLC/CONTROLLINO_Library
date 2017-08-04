@@ -218,7 +218,7 @@ It should be added automatically with the `#include <Controllino.h>`.
 
 ### RS485 functions
 
-Please note that RS485 interface is present ony in MAXI and MEGA variants.
+Please note that RS485 interface is present only in MAXI and MEGA variants.
 
 ##### Initialization of the RS485 bus
  *  Serial3 still needs to be initialized separately. This only inits RE and DE pins.
