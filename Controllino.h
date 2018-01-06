@@ -639,6 +639,11 @@
   #define CONTROLLINO_A7 61
   #define CONTROLLINO_A8 62
   #define CONTROLLINO_A9 63
+  #define CONTROLLINO_A10 64
+  #define CONTROLLINO_A11 65
+  
+  #define CONTROLLINO_A12 68
+  #define CONTROLLINO_A13 69
   /* END - just for compatibility with the common examples - END */
   
   #define CONTROLLINO_DI0 66
