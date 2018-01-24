@@ -321,3 +321,9 @@ Question: I am not using RTC and/or Ethernet built in CONTROLLINO MAXI/MEGA. I a
 Question: It is not possible to read digital value of the A6 and A7 inputs on CONTROLLINO MINI.
 
 *Answer: These pins are analogue inputs only and it is not possible to read their digital status, because of the microprocessor architecture. The only chance is to read out their analogue value and distinguish by some threshold value.*
+
+**9. CONTROLLINO MAXI Ethernet.localIP() always returns 255.255.255.255**
+
+Issue: I bought a Controllino MAXI and I had difficulties connecting through Ethernet. Ethernet.localIP() always returned 255.255.255.255.
+
+*Solution: The problem was due to the fact that Arduino IDE linked the standard Ethernet library and not Controllino's one (it appeared in the compilation logs of Arduino IDE). Under ArchLinux, I manually replaced ~/Arduino/libraries/Ethernet by Controllino's Ethernet folder (~/.arduino15/packages/CONTROLLINO_Boards/hardware/avr/2.0.1/libraries/Ethernet/src) and it worked.*
