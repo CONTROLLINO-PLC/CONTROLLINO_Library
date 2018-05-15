@@ -327,3 +327,16 @@ Question: It is not possible to read digital value of the A6 and A7 inputs on CO
 Issue: I bought a Controllino MAXI and I had difficulties connecting through Ethernet. Ethernet.localIP() always returned 255.255.255.255.
 
 *Solution: The problem was due to the fact that Arduino IDE linked the standard Ethernet library and not Controllino's one (it appeared in the compilation logs of Arduino IDE). Under ArchLinux, I manually replaced /Arduino/libraries/Ethernet by Controllino's Ethernet folder (/.arduino15/packages/CONTROLLINO_Boards/hardware/avr/2.0.1/libraries/Ethernet/src) and it worked.*
+
+**10. There is not possible to upload a new sketch to CONTROLLINO anymore**
+
+Issue: The CONTROLLINO works fine, but after some time (and successfully uploaded sketches), it seems to be bricked. It is not possible to upload any sketch and Arduino IDE reports some kind of avrdude: verification error, or avrdude: stk500_recv(): programmer is not responding. 
+
+*Solution: The problem is not related to CONTROLLINO platform only. It seems to be a general weakness of Arduino IDE, avrdude and original bootloader. It is still not clear what exactly happens, but it seems that after upload of a corrupted binary the microcontroller skips the bootloader when reset during operation.*
+
+Please, try following steps: 
+ - Disconnect the power and USB cable
+ - Press and hold Reset button at CONTROLLINO
+ - Connect USB cable
+ - Press Upload button in Arduino IDE
+ - Release Reset button when “Compiling sketch ...” message changes to “Uploading”
