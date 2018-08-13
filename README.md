@@ -14,10 +14,10 @@ We have prepared a new version of BSP featuring following changes and upgrades:
 * PD4 - CONTROLLINO MEGA Digital 20 is now pin 77
 * PD5 - CONTROLLINO MEGA Digital 21 is now pin 78
 * PD6 - CONTROLLINO MEGA Digital 22 is now pin 79
-* PJ4 - CONTROLLINO MEGA Digital 23 is now pin 79
+* PJ4 - CONTROLLINO MEGA Digital 23 is now pin 80
 * CONTROLLINO works with standard Ethernet library (Do not forget to update your Ethernet library to ver. 2.0.0 or newer.)
-* No need to tell the Ethernet library which pin is used for SPI chipselect - 
-* CONTROLLINO bootloaders are part of the BSP
+* No need to tell the Ethernet library which pin is used for SPI chipselect - it should be assigned automatically.
+* CONTROLLINO bootloaders are part of the BSP now
 
 If you will face some compilation errors after the update, please check your 
 c:\Users\UserName\AppData\Local\Arduino15\packages\CONTROLLINO_Boards\hardware\avr\
