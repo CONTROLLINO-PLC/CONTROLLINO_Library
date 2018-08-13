@@ -1,16 +1,27 @@
-## :exclamation: UPGRADE TO NEW BSP VERSION 2.0.1 AVAILABLE :exclamation:
+## :exclamation: UPGRADE TO NEW BSP VERSION 3.0.1 AVAILABLE :exclamation:
 
 ### If you want to upgrade your CONTROLLINO BSP go to your Arduino IDE Boards Manager!
 
 We have prepared a new version of BSP featuring following changes and upgrades:
-* Compiler upgraded from version 4.8.1-arduino5 to 4.9.2-atmel3.5.3-arduino2
-* Avrdude upgraded from version 6.0.1-arduino5 to 6.3.0-arduino8
-* Arduino Core library upgraded to the latest version (contained in Arduino IDE 1.8.3)
-* Root folder for BSP no longer contains spaces (fixed issue while compiling from command line)
+* All CONTROLLINO pins have Arduino number now! No need to access the pins through the registers anymore! 
+* PJ3 - CONTROLLINO ETHERNET CHIP SELECT is now pin 70
+* PE6 - CONTROLLINO ETHERNET INTERRUPT is now pin 71
+* PJ2 - CONTROLLINO RTC CHIP SELECT is now pin 72
+* PJ7 - CONTROLLINO RTC INTERRUPT is now pin 73
+* PE7 - CONTROLLINO OVERLOAD is now pin 74
+* PJ6 - CONTROLLINO RS485 DE is now pin 75
+* PJ5 - CONTROLLINO RS485 /RE is now pin 76
+* PD4 - CONTROLLINO MEGA Digital 20 is now pin 77
+* PD5 - CONTROLLINO MEGA Digital 21 is now pin 78
+* PD6 - CONTROLLINO MEGA Digital 22 is now pin 79
+* PJ4 - CONTROLLINO MEGA Digital 23 is now pin 79
+* CONTROLLINO works with standard Ethernet library (Do not forget to update your Ethernet library to ver. 2.0.0 or newer.)
+* No need to tell the Ethernet library which pin is used for SPI chipselect - 
+* CONTROLLINO bootloaders are part of the BSP
 
 If you will face some compilation errors after the update, please check your 
 c:\Users\UserName\AppData\Local\Arduino15\packages\CONTROLLINO_Boards\hardware\avr\
-folder and remove all previous obsolete versions (e.g. 2.0.0).
+folder and remove all previous obsolete versions (e.g. 2.0.0, 2.0.1, or 3.0.0).
 
 # CONTROLLINO
 
@@ -282,6 +293,8 @@ Question: Pins Digital 20 - Digital 23 seem not to be implemented to use with di
 *Answer: It is correct. Our library does not support these digital outputs as we have tried to do not touch Arduino Core functionality. But it may be a point for further releases...
 I am afraid that you have to use this "PORTD" way to control these pins. Please check example sketch PortManipulation in the Arduino IDE for more details.*
 
+*UPDATE - should be fixed with BSP version 3.0.0. - all CONTROLLINO pins have Arduino number now!*
+
 **4. CONTROLLINO boards not showing with arduino IDE 1.6.12**
 
 Question: Loading the Controllino Library into the Arduino 1.6.12 IDE does not show up the Controllino boards on the board types list.
@@ -327,6 +340,8 @@ Question: It is not possible to read digital value of the A6 and A7 inputs on CO
 Issue: I bought a Controllino MAXI and I had difficulties connecting through Ethernet. Ethernet.localIP() always returned 255.255.255.255.
 
 *Solution: The problem was due to the fact that Arduino IDE linked the standard Ethernet library and not Controllino's one (it appeared in the compilation logs of Arduino IDE). Under ArchLinux, I manually replaced /Arduino/libraries/Ethernet by Controllino's Ethernet folder (/.arduino15/packages/CONTROLLINO_Boards/hardware/avr/2.0.1/libraries/Ethernet/src) and it worked.*
+
+*UPDATE - should be fixed with BSP version 3.0.0. - CONTROLLINO uses standard Arduino Ethernet library now!*
 
 **10. There is not possible to upload a new sketch to CONTROLLINO anymore**
 
