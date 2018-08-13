@@ -1,9 +1,9 @@
-## :exclamation: UPGRADE TO NEW BSP VERSION 3.0.0 AVAILABLE :exclamation:
+## :exclamation: UPGRADE TO NEW BSP VERSION 3.0.1 AVAILABLE :exclamation:
 
 ### If you want to upgrade your CONTROLLINO BSP go to your Arduino IDE Boards Manager!
 
 We have prepared a new version of BSP featuring following changes and upgrades:
-* All pins have Arduino number!
+* All CONTROLLINO pins have Arduino number now! No need to access the pins through the registers anymore! 
 * PJ3 - CONTROLLINO ETHERNET CHIP SELECT is now pin 70
 * PE6 - CONTROLLINO ETHERNET INTERRUPT is now pin 71
 * PJ2 - CONTROLLINO RTC CHIP SELECT is now pin 72
@@ -15,12 +15,13 @@ We have prepared a new version of BSP featuring following changes and upgrades:
 * PD5 - CONTROLLINO MEGA Digital 21 is now pin 78
 * PD6 - CONTROLLINO MEGA Digital 22 is now pin 79
 * PJ4 - CONTROLLINO MEGA Digital 23 is now pin 79
-* CONTROLLINO works with standard Ethernet library
+* CONTROLLINO works with standard Ethernet library (Do not forget to update your Ethernet library to ver. 2.0.0 or newer.)
+* No need to tell the Ethernet library which pin is used for SPI chipselect - 
 * CONTROLLINO bootloaders are part of the BSP
 
 If you will face some compilation errors after the update, please check your 
 c:\Users\UserName\AppData\Local\Arduino15\packages\CONTROLLINO_Boards\hardware\avr\
-folder and remove all previous obsolete versions (e.g. 2.0.0 or 2.0.1).
+folder and remove all previous obsolete versions (e.g. 2.0.0, 2.0.1, or 3.0.0).
 
 # CONTROLLINO
 
