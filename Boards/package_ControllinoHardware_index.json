@@ -137,10 +137,41 @@
           "architecture": "avr",
           "version": "3.0.0",
           "category": "Contributed",
-          "url": "https://github.com/CONTROLLINO-PLC/CONTROLLINO_Library/raw/master/Boards/ControllinoHW.zip",
+          "url": "https://github.com/CONTROLLINO-PLC/CONTROLLINO_Library/blob/cca67c1cefa77897be062c05827176a3e8be07c2/Boards/ControllinoHW.zip?raw=true",
           "archiveFileName": "ControllinoHW.zip",
           "checksum": "SHA-256:653e16df2533b9fc3f360080876a5285a5aad2b7a8753fdf73eba6a7a1ad4dde",
           "size": "63054",
+          "help": {
+            "online": "https://github.com/CONTROLLINO-PLC/CONTROLLINO_Library/issues"
+          },
+          "boards": [
+            { "name": "MINI" },
+            { "name": "MAXI" },
+            { "name": "MAXI Automation" },
+            { "name": "MEGA" }
+          ],
+          "toolsDependencies": [
+            {
+              "packager": "arduino",
+              "name": "avr-gcc",
+              "version": "4.9.2-atmel3.5.3-arduino2"
+            },
+            {
+              "packager": "arduino",
+              "name": "avrdude",
+              "version": "6.3.0-arduino8"
+            }
+          ]
+        },
+        {
+          "name": "CONTROLLINO Boards",
+          "architecture": "avr",
+          "version": "3.0.1",
+          "category": "Contributed",
+          "url": "https://github.com/CONTROLLINO-PLC/CONTROLLINO_Library/raw/master/Boards/ControllinoHW.zip",
+          "archiveFileName": "ControllinoHW.zip",
+          "checksum": "SHA-256:642b7d8f9a24eddc96f41e9d485020fcebbb046dcb3fca55d321f6c562709d3d",
+          "size": "205316",
           "help": {
             "online": "https://github.com/CONTROLLINO-PLC/CONTROLLINO_Library/issues"
           },
