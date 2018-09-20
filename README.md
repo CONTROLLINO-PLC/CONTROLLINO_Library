@@ -1,8 +1,12 @@
-## :exclamation: UPGRADE TO NEW BSP VERSION 3.0.1 AVAILABLE :exclamation:
+## :exclamation: NEW Board Support Package (BSP) VERSION 3.0.2 AVAILABLE :exclamation:
+## :exclamation: NEW CONTROLLINO library VERSION 3.0.2 AVAILABLE :exclamation:
 
 ### If you want to upgrade your CONTROLLINO BSP go to your Arduino IDE Boards Manager!
+### If you want to upgrade your CONTROLLINO library go to your Arduino IDE Library Manager!
 
 We have prepared a new version of BSP featuring following changes and upgrades:
+* CONTROLLINO BSP refers to Arduino core libraries and does not include any (frozen) core libraries anymore
+* CONTROLLINO BSP refers to Arduino platform and tool definitions and does not include any (frozen) platform and tool definitions anymore
 * All CONTROLLINO pins have Arduino number now! No need to access the pins through the registers anymore! 
 * PJ3 - CONTROLLINO ETHERNET CHIP SELECT is now pin 70
 * PE6 - CONTROLLINO ETHERNET INTERRUPT is now pin 71
@@ -19,9 +23,15 @@ We have prepared a new version of BSP featuring following changes and upgrades:
 * No need to tell the Ethernet library which pin is used for SPI chipselect - it should be assigned automatically.
 * CONTROLLINO bootloaders are part of the BSP now
 
+We have prepared a new version of library featuring following changes and upgrades:
+* Added some more comfortable API functions like Controllino_RS485Init( aBaudrate ), Controllino_RS485TxEnable, Controllino_RS485RxEnable
+* Updated whole library to use new pin aliases
+* Updated all Examples to be synchronized with the latest BSP and library
+* Removed obsolete examples - no need to handle CONTROLLINO pins via PORT registers anymore
+
 If you will face some compilation errors after the update, please check your 
 c:\Users\UserName\AppData\Local\Arduino15\packages\CONTROLLINO_Boards\hardware\avr\
-folder and remove all previous obsolete versions (e.g. 2.0.0, 2.0.1, or 3.0.0).
+folder and remove all previous obsolete versions (e.g. 2.0.0, 2.0.1, 3.0.0, or 3.0.1).
 
 # CONTROLLINO
 
