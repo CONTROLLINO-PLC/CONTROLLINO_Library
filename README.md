@@ -163,10 +163,9 @@ It should be added automatically with the `#include <Controllino.h>`.
 **Do not forget to properly setup the mechanical switch at your MINI!**
 
 ##### Initializes RTC library, SPI bus and RTC chip (RV-2123)
- *  @param aChipSelect is ignored. Kept for backwards compatibility only.
  *  @return Always returns 0
  
-`char Controllino_RTC_init(unsigned char aChipSelect)`
+`char Controllino_RTC_init()`
 
 ##### Sets time and date to the RTC chip (RV-2123)
  *  See [RTC chip manual](http://www.microcrystal.com/images/_Product-Documentation/02_Oscillator_&_RTC_Modules/02_Application_Manual/RV-2123-C2_App-Manual.pdf) for more information.
@@ -242,22 +241,22 @@ It should be added automatically with the `#include <Controllino.h>`.
 Please note that RS485 interface is present only in MAXI and MEGA variants.
 
 ##### Initialization of the RS485 bus
- *  Serial3 still needs to be initialized separately. This only inits RE and DE pins.
+ *  @param Baudrate
  *  @return Always returns 0
  
-`char Controllino_RS485Init( void )`
+`char Controllino_RS485Init( Baudrate )`
 
-##### Control of RS485 bus RE signal 
- *  @param mode 0 for RS485 Receive Enable Active, 1 for Receive Enable Inactive 
- *  @return Returns 0 when succeeded, -1 for unsupported mode
- 
-`char Controllino_SwitchRS485RE(char mode)`
+##### Control of RS485 direction to receive 
+* Do not forget to wait until all data were transmitted before you switch back to reception
+* You can use Serial3.flush() function for that.
 
-##### Control of RS485 bus DE signal 
- *  @param mode 0 for RS485 Data Transmission Enable Inactive, 1 for Data Transmission Enable Active
- *  @return Returns 0 when succeeded, -1 for unsupported mode
- 
-`char Controllino_SwitchRS485DE(char mode)`
+`Controllino_RS485RxEnable()`
+
+##### Control of RS485 direction to transmit 
+* Do not forget to wait until all data were transmitted before you switch back to reception
+* You can use Serial3.flush() function for that.
+
+`Controllino_RS485TxEnable()`
 
 ## Installation guide
 
@@ -332,13 +331,16 @@ Question: I am not using RTC and/or Ethernet built in CONTROLLINO MAXI/MEGA. I a
 *This may cause confusion of the SPI communication at the pinheader and also strange voltages at MISO (pin header X1) when using it as GPIO.*
  
 *These three lines in your sketch setup function should do the job:*
+
+`pinMode(CONTROLLINO_RTC_CHIP_SELECT, OUTPUT);`
+
+`pinMode(CONTROLLINO_ETHERNET_CHIP_SELECT, OUTPUT);`
+
+`digitalWrite(CONTROLLINO_RTC_CHIP_SELECT, LOW);       // inactive`
+
+`digitalWrite(CONTROLLINO_ETHERNET_CHIP_SELECT, HIGH); // inactive`
+
  
-`DDRJ   | = B00001100;` 
-
-`PORTJ &= B11111011;`
-
-`PORTJ | = B00001000;`
-
 **8. CONTROLLINO MINI A6, A7 inputs**
 
 Question: It is not possible to read digital value of the A6 and A7 inputs on CONTROLLINO MINI.
