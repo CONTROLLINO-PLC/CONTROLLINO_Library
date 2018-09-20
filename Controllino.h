@@ -11,8 +11,8 @@
  *  https://www.arduino.cc/
  *
  *  @author CONTROLLINO design team
- *  @version   1.1.1
- *  @date      2017-03-21
+ *  @version   3.0.2
+ *  @date      2018-09-20
  *  @bug No known bugs.
  */
 
@@ -1002,6 +1002,12 @@
  */
 char Controllino_RTC_init(unsigned char aChipSelect);
 
+/** @brief Initializes RTC library, SPI bus and RTC chip (RV-2123)
+ *
+ *  @return Always returns 0
+ */
+char Controllino_RTC_init( void );
+
 /** @brief Sets time and date to the RTC chip (RV-2123)
  *
  *  See http://www.microcrystal.com/images/_Product-Documentation/02_Oscillator_&_RTC_Modules/02_Application_Manual/RV-2123-C2_App-Manual.pdf
@@ -1111,6 +1117,24 @@ char Controllino_SetRTCSS(char mode);
  *  @return Always returns 0 
  */
 char Controllino_RS485Init( void );
+
+/** @brief Initialization of the RS485 bus with baudrate
+ *
+ *  @return Always returns 0 
+ */
+char Controllino_RS485Init( long aBaudrate );
+
+/** @brief Enable RS485 bus trasmission 
+ *
+ *  @return void
+ */
+void Controllino_RS485TxEnable( void );
+
+/** @brief Enable RS485 bus reception 
+ *
+ *  @return void
+ */
+void Controllino_RS485RxEnable( void );
 
 /** @brief Control of RS485 bus RE signal 
  *
