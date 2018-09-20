@@ -2,7 +2,7 @@
 #include <Controllino.h>  /* Usage of CONTROLLINO library allows you to use CONTROLLINO_xx aliases in your sketch. */
 
 /*
-  CONTROLLINO - Demonstration of Real Time Clock usage, Version 01.00
+  CONTROLLINO - Demonstration of Real Time Clock usage, Version 02.00
 
   Periodically reads out the date and time information from the RTC chip.
   As it is done each 5 seconds, the number of seconds read out from the chip should be always for 5 seconds higher.
@@ -17,7 +17,7 @@
 
   You need only your PC, CONTROLLINO and USB cable. 
   
-  Created 12 Jan 2017
+  Created 12 Jan 2017, Updated 20.9.2018
   by Lukas
 
   https://controllino.biz/
@@ -31,7 +31,7 @@ void setup() {
   // initialize serial communication at 9600 bits per second
   Serial.begin(9600);
   
-  Controllino_RTC_init(0);
+  Controllino_RTC_init();
 
   Controllino_SetTimeDate(12,4,1,17,15,41,23); // set initial values to the RTC chip
 }
@@ -58,5 +58,5 @@ void loop() {
 
 /* End of the example. Visit us at https://controllino.biz/ or https://github.com/CONTROLLINO-PLC/CONTROLLINO_Library or contact us at info@controllino.biz if you have any questions or troubles. */
 
-/* 2017-01-12: The sketch was successfully tested with Arduino 1.6.13, Controllino Library 1.0.0 and CONTROLLINO MINI, MAXI and MEGA. */
+/* 2018-09-20: The sketch was successfully tested with Arduino 1.8.5, Controllino Library 3.0.2 and CONTROLLINO MINI, MAXI and MEGA. */
 
