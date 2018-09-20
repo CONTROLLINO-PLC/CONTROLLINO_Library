@@ -8,8 +8,8 @@
  *  https://www.arduino.cc/
  *
  *  @author CONTROLLINO design team
- *  @version   1.1.0
- *  @date      2017-01-24
+ *  @version   3.0.2
+ *  @date      2018-09-20
  *  @bug No known bugs.
  */
 
@@ -19,6 +19,11 @@
 boolean isRTCInitialized = false;
 
 char Controllino_RTC_init(unsigned char aChipSelect)
+{
+	return Controllino_RTC_init();
+}
+
+char Controllino_RTC_init( void )
 {
 	unsigned char SPISetting; // variable to hold SPI setting
 	//Store current SPI setting  
@@ -381,14 +386,45 @@ char Controllino_PrintTimeAndDate( void )
 
 char Controllino_RS485Init( void )
 {
-	//set PORTJ pin 5,6 direction (RE,DE)
-	DDRJ |= B01100000;
-	//set RE,DE on LOW
-	PORTJ &= B10011111;
+
+	pinMode(CONTROLLINO_RS485_DE, OUTPUT);
+  pinMode(CONTROLLINO_RS485_nRE, OUTPUT);
+
+  Controllino_RS485RxEnable();
 	
 	return 0;
 }
 
+char Controllino_RS485Init( long aBaudrate )
+{
+  
+  Controllino_RS485Init();
+  /* Initialize serial port for RS485 communication */
+  Serial3.begin(aBaudrate);
+  
+  return 0;
+}
+
+void Controllino_RS485TxEnable( void )
+{
+  /* disable receiver, enable transmitter */
+  digitalWrite(CONTROLLINO_RS485_DE, HIGH);
+  digitalWrite(CONTROLLINO_RS485_nRE, HIGH);
+
+  return;
+}
+
+void Controllino_RS485RxEnable( void )
+{
+  /* disable trasmitter, enable receiver */
+  digitalWrite(CONTROLLINO_RS485_DE, LOW);
+  digitalWrite(CONTROLLINO_RS485_nRE, LOW);
+
+  return;
+}
+
+
+/* obsolete way of RE pin handling */
 char Controllino_SwitchRS485RE(char mode)
 {
 	if (mode == 0)
@@ -405,6 +441,7 @@ char Controllino_SwitchRS485RE(char mode)
 	return 0;
 }
 
+/* obsolete way of DE pin handling */
 char Controllino_SwitchRS485DE(char mode)
 {
 	if (mode == 0)
@@ -425,55 +462,51 @@ char Controllino_SwitchRS485DE(char mode)
 char Controllino_RTCSSInit( void )
 {
 	#if defined(CONTROLLINO_MAXI) || defined(CONTROLLINO_MEGA) || defined(CONTROLLINO_MAXI_AUTOMATION)
-	//set PORTJ pin 2 RTC SS direction and LAN SS (PORTJ pin 3) as well for safety
-	DDRJ |= B00001100;	
-	// pinMode(CONTROLLINO_PIN_HEADER_DIGITAL_OUT_00,OUTPUT);  // DEBUG
-	// set RTC SS on LOW and LAN SS on HIGH (Negated)
-	PORTJ &= B11111011;
-	PORTJ |= B00001000;
-	// digitalWrite(CONTROLLINO_PIN_HEADER_DIGITAL_OUT_00, LOW);  // DEBUG
-	return 0;
+	
+    pinMode(CONTROLLINO_RTC_CHIP_SELECT, OUTPUT);
+    pinMode(CONTROLLINO_ETHERNET_CHIP_SELECT, OUTPUT);
+    
+    digitalWrite(CONTROLLINO_RTC_CHIP_SELECT, LOW);       // inactive
+    digitalWrite(CONTROLLINO_ETHERNET_CHIP_SELECT, HIGH); // inactive
+
+	 return 0;
 	#endif
 	#if defined(CONTROLLINO_MINI)
-	pinMode(CONTROLLINO_PIN_HEADER_SS,OUTPUT);
-	digitalWrite(CONTROLLINO_PIN_HEADER_SS, LOW);
-	return 0;
+	 pinMode(CONTROLLINO_PIN_HEADER_SS,OUTPUT);
+	 digitalWrite(CONTROLLINO_PIN_HEADER_SS, LOW);
+	 return 0;
 	#endif
-	return -2; // No Controllino board is selected
+	 return -2; // No Controllino board is selected
 }
 
 char Controllino_SetRTCSS(char mode)
 {
 	#if defined(CONTROLLINO_MAXI) || defined(CONTROLLINO_MEGA) || defined(CONTROLLINO_MAXI_AUTOMATION)
-	if (mode == 0)
-	{
-		// set RTC SS on LOW
-		PORTJ &= B11111011;
-		// digitalWrite(CONTROLLINO_PIN_HEADER_DIGITAL_OUT_00, LOW);    // DEBUG
-	}
-	else if (mode == 1)
-		{
-			// set RTC SS on HIGH
-			PORTJ |= B00000100;
-			// digitalWrite(CONTROLLINO_PIN_HEADER_DIGITAL_OUT_00, HIGH);  // DEBUG
-		}
-		else return -1; // Unknown mode value
-	return 0;
+  	if (mode == 0)
+  	{
+  		digitalWrite(CONTROLLINO_RTC_CHIP_SELECT, LOW);       // inactive
+  	}
+  	else if (mode == 1)
+  		{
+  			digitalWrite(CONTROLLINO_RTC_CHIP_SELECT, HIGH);       // inactive
+  		}
+  	else return -1; // Unknown mode value
+  	return 0;
 	#endif
 	#if defined(CONTROLLINO_MINI)
-	if (mode == 0)
-	{
-		// set RTC SS on LOW
-		digitalWrite(CONTROLLINO_PIN_HEADER_SS, LOW);
-	}
-	else if (mode == 1)
-		{
-			// set RTC SS on HIGH
-			digitalWrite(CONTROLLINO_PIN_HEADER_SS, HIGH);
-		}
-		else return -1; // Unknown mode value
-	return 0;
+  	if (mode == 0)
+  	{
+  		// set RTC SS on LOW
+  		digitalWrite(CONTROLLINO_PIN_HEADER_SS, LOW);
+  	}
+  	else if (mode == 1)
+  		{
+  			// set RTC SS on HIGH
+  			digitalWrite(CONTROLLINO_PIN_HEADER_SS, HIGH);
+  		}
+  	else return -1; // Unknown mode value
+	  return 0;
 	#endif
-	return -2; // No Controllino board is selected
+  	return -2; // No Controllino board is selected
 }
 
