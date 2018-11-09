@@ -367,3 +367,20 @@ Please, try following steps:
  - Connect USB cable
  - Press Upload button in Arduino IDE
  - Release Reset button when “Compiling sketch ...” message changes to “Uploading”
+ 
+ **11. Ethernet issues with PlatformIO **
+
+Issue: Right now ethernet works for me out of the box in Arduino IDE, but I'd like to use PlatformIO and all my attempts to fix ethernet there have failed. 
+
+*Solution: Update the Arduino Ethernet library in PlatformIO. It is necessary to remove the old one and install the latest one (2.0.0 or higher). Manually update CONTROLLINO boards pin definition files. Override original pins_arduino.h for variant mega.*
+
+
+Try following steps: 
+ - Remove Arduino Ethernet library from PlatformIO and install the latest one (2.0.0 or higher)
+ - Install the CONTROLLINO library to PlatformIO
+ - (following steps assume that you have installed also the Arduino IDE with CONTROLLINO boards support)
+ - Copy AppData\Local\Arduino15\packages\CONTROLLINO_Boards\hardware\avr\3.0.2\variants\mega\pins_arduino.h to .platformio\packages\framework-arduinoavr\variants\mega\
+ - Copy pins_arduino.h for all CONTROLLINO variants from AppData\Local\Arduino15\packages\CONTROLLINO_Boards\hardware\avr\3.0.2\variants to appropriate folders in .platformio\packages\framework-arduinoavr\variants
+ 
+ Then Ethernet and also all other CONTROLLINO examples (like RS485) should work!
+ 
