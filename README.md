@@ -368,7 +368,7 @@ Please, try following steps:
  - Press Upload button in Arduino IDE
  - Release Reset button when “Compiling sketch ...” message changes to “Uploading”
  
- **11. Ethernet issues with PlatformIO **
+**11. Ethernet issues with PlatformIO **
 
 Issue: Right now ethernet works for me out of the box in Arduino IDE, but I'd like to use PlatformIO and all my attempts to fix ethernet there have failed. 
 
