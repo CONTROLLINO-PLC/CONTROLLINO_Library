@@ -11,8 +11,8 @@
  *  https://www.arduino.cc/
  *
  *  @author CONTROLLINO design team
- *  @version   3.0.2
- *  @date      2018-09-20
+ *  @version   3.0.3
+ *  @date      2018-11-15
  *  @bug No known bugs.
  */
 
@@ -1024,6 +1024,18 @@ char Controllino_RTC_init( void );
  *  @return Returns 0 when succeeded, or -1 if the RTC library was not initialized before
  */
 char Controllino_SetTimeDate(unsigned char aDay, unsigned char aWeekDay,unsigned char aMonth, unsigned char aYear, unsigned char aHour, unsigned char aMinute, unsigned char aSecond);
+
+/** @brief Sets time and date to the RTC chip (RV-2123)
+ *
+ *  See http://www.microcrystal.com/images/_Product-Documentation/02_Oscillator_&_RTC_Modules/02_Application_Manual/RV-2123-C2_App-Manual.pdf
+ *  for more information.
+ *
+ *  @param aDate string including the date - use __DATE__ for a date of the compilation
+ *  @param aTime string including the time - use __TIME__ for a time of the compilation
+ *  
+ *  @return Returns 0 when succeeded, or -1 if the RTC library was not initialized before
+ */
+char Controllino_SetTimeDateStrings(const char* aDate, const char* aTime);
 
 /** @brief Reads out the time and date from the RTC chip (RV-2123)
  *
