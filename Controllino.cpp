@@ -393,6 +393,7 @@ static uint8_t conv2d(const char* p)
     return 10 * v + *++p - '0';
 }
 
+const uint8_t daysInMonth []  = { 31,28,31,30,31,30,31,31,30,31,30,31 };
 /* This function is taken from https://github.com/adafruit/RTClib */
 /* Released to the public domain! Enjoy! */
 /* number of days since 2000/01/01, valid for 2001..2099 */
@@ -402,7 +403,7 @@ static uint16_t date2days(uint16_t y, uint8_t m, uint8_t d)
         y -= 2000;
     uint16_t days = d;
     for (uint8_t i = 1; i < m; ++i)
-        days += pgm_read_byte(daysInMonth + i - 1);
+        days += *(daysInMonth + i - 1);
     if (m > 2 && y % 4 == 0)
         ++days;
     return days + 365 * y + (y + 3) / 4 - 1;
