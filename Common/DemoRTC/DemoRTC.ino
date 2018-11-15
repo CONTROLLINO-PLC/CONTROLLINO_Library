@@ -17,7 +17,7 @@
 
   You need only your PC, CONTROLLINO and USB cable. 
   
-  Created 12 Jan 2017, Updated 20.9.2018
+  Created 12 Jan 2017, Updated 15.11.2018
   by Lukas
 
   https://controllino.biz/
@@ -33,7 +33,14 @@ void setup() {
   
   Controllino_RTC_init();
 
-  Controllino_SetTimeDate(12,4,1,17,15,41,23); // set initial values to the RTC chip
+  /* set time and date by separate values values to the RTC chip */
+  /* Day, WeekDay, Month, Year, Hour, Minute, Second); */
+  Controllino_SetTimeDate(12,4,1,17,15,41,23); 
+  
+  /* or use another possibility and define the time and date by strings, e.g. "Nov 15 2018", "11:41:02" */
+  /* following example uses predefined C macros __DATE__ and __TIME__ which represent compilation time */
+  Controllino_SetTimeDateStrings(__DATE__, __TIME__); /* set compilation time to the RTC chip */
+  
 }
 
 // the loop function runs over and over again forever
