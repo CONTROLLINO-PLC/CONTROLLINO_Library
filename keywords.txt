@@ -44,6 +44,7 @@ Controllino_SwitchRS485RE	KEYWORD2
 Controllino_SwitchRS485DE	KEYWORD2
 Controllino_RS485RxEnable KEYWORD2
 Controllino_RS485TxEnable KEYWORD2
+Controllino_SetTimeDateStrings KEYWORD2
 
 #######################################
 # Constants MINI (LITERAL1) 
