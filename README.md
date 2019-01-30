@@ -370,17 +370,18 @@ Please, try following steps:
  
 **11. Ethernet issues with PlatformIO**
 
-Issue: Right now ethernet works for me out of the box in Arduino IDE, but I'd like to use PlatformIO and all my attempts to fix ethernet there have failed. 
+Issue: Right now ethernet works for me out of the box in Arduino IDE, but I'd like to use PlatformIO and the compilation fails - the compiler does not see Ethernet.h file. 
 
-*Solution: Update the Arduino Ethernet library in PlatformIO. It is necessary to remove the old one and install the latest one (2.0.0 or higher). Manually update CONTROLLINO boards pin definition files. Override original pins_arduino.h for variant mega.*
+*Solution: Tell the PlatformIO all dependencies to the external libraries used by your project.*
 
 
 Try following steps: 
- - Remove Arduino Ethernet library from PlatformIO and install the latest one (2.0.0 or higher)
- - Install the CONTROLLINO library to PlatformIO
- - (following steps assume that you have installed also the Arduino IDE with CONTROLLINO boards support)
- - Copy AppData\Local\Arduino15\packages\CONTROLLINO_Boards\hardware\avr\3.0.2\variants\mega\pins_arduino.h to .platformio\packages\framework-arduinoavr\variants\mega\
- - Copy pins_arduino.h for all CONTROLLINO variants from AppData\Local\Arduino15\packages\CONTROLLINO_Boards\hardware\avr\3.0.2\variants to appropriate folders in .platformio\packages\framework-arduinoavr\variants
+ - Make sure that you have the latest version of the PlatformIO -  run `$ pio update`
+ - Create a new project for one of the CONTROLLINO boards
+ - Edit file `platformio.ini` 
+ - extend the line lib_deps in this way `lib_deps = Ethernet@^2.0.0, SPI`
  
- Then Ethernet and also all other CONTROLLINO examples (like RS485) should work!
+ Then Ethernet examples should work!
+ 
+ See docs https://docs.platformio.org/en/latest/librarymanager/quickstart.html#project-dependencies for more details!
  
