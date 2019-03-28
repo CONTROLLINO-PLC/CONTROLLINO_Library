@@ -374,7 +374,6 @@ Issue: Right now ethernet works for me out of the box in Arduino IDE, but I'd li
 
 *Solution: Tell the PlatformIO all dependencies to the external libraries used by your project.*
 
-
 Try following steps: 
  - Make sure that you have the latest version of the PlatformIO -  run `$ pio update`
  - Create a new project for one of the CONTROLLINO boards
@@ -384,4 +383,23 @@ Try following steps:
  Then Ethernet examples should work!
  
  See docs https://docs.platformio.org/en/latest/librarymanager/quickstart.html#project-dependencies for more details!
- 
+
+
+**12. Internal pull-up for input pins does not work**
+
+Issue: The following line of code fails to raise the voltage level of the pin to high:
+```c
+pinMode(pin, INPUT_PULLUP);
+```
+
+*Solution: Attach sufficiently small external pull-up resistors to all inputs requiring pull-up mode.*
+
+Suggested pull-up resistors:
+* screw terminals: 8kΩ
+* pin header: 1.5kΩ
+
+Explanation: CONTROLLINO boards contain additional pull-down resistors:
+* screw terminals: 80kΩ
+* pin header: 15kΩ
+
+See [issue #26](https://github.com/CONTROLLINO-PLC/CONTROLLINO_Library/issues/26#issuecomment-474915625) for details.
