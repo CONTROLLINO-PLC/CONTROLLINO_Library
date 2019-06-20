@@ -1,5 +1,5 @@
 ## :exclamation: NEW Board Support Package (BSP) VERSION 3.0.2 AVAILABLE :exclamation:
-## :exclamation: NEW CONTROLLINO library VERSION 3.0.4 AVAILABLE :exclamation:
+## :exclamation: NEW CONTROLLINO library VERSION 3.0.5 AVAILABLE :exclamation:
 
 ### If you want to upgrade your CONTROLLINO BSP go to your Arduino IDE Boards Manager!
 ### If you want to upgrade your CONTROLLINO library go to your Arduino IDE Library Manager!
