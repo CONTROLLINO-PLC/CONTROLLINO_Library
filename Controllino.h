@@ -12,7 +12,7 @@
  *
  *  @author CONTROLLINO design team
  *  @version   3.0.5
- *  @date      2019-02-18
+ *  @date      2019-06-20
  *  @bug No known bugs.
  */
 
