@@ -1,3 +1,7 @@
+
+:exclamation: NEW! :exclamation:
+Please see our [tutorial how to burn the MINI bootloader with Arduino UNO](https://forum.controllino.biz/viewtopic.php?f=6&t=2199) .
+
 ## CONTROLLINO customized bootloaders
 * Here you can find our customized bootloaders for all CONTROLLINO variants. Please select your variant, download the hex file and follow the guide.
 * Atmel Studio is for free and you can download it from the [Atmel web pages](http://www.atmel.com/).
