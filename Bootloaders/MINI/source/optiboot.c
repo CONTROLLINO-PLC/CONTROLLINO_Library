@@ -167,9 +167,6 @@ asm("  .section .version\n"
 #include "pin_defs.h"
 #include "stk500.h"
 
-#ifndef LED_START_FLASHES
-#define LED_START_FLASHES 0
-#endif
 
 #ifdef LUDICROUS_SPEED
 #define BAUD_RATE 230400L
@@ -219,7 +216,6 @@ void putch(char);
 uint8_t getch(void);
 static inline void getNch(uint8_t); /* "static inline" is a compiler hint to reduce code size */
 void verifySpace();
-static inline void flash_led(uint8_t);
 uint8_t getLen();
 static inline void watchdogReset();
 void watchdogConfig(uint8_t x);
@@ -289,10 +285,6 @@ int main(void) {
   MCUSR = 0;
   if (!(ch & _BV(EXTRF))) appStart();
 
-#if LED_START_FLASHES > 0
-  // Set up Timer 1 for timeout counter
-  TCCR1B = _BV(CS12) | _BV(CS10); // div 1024
-#endif
 #ifndef SOFT_UART
 #ifdef __AVR_ATmega8__
   UCSRA = _BV(U2X); //Double speed mode USART
@@ -304,23 +296,16 @@ int main(void) {
   UCSR0B = _BV(RXEN0) | _BV(TXEN0);
   UCSR0C = _BV(UCSZ00) | _BV(UCSZ01);
   UBRR0L = (uint8_t)( (F_CPU + BAUD_RATE * 4L) / (BAUD_RATE * 8L) - 1 );
+  UBRR0H = (uint8_t) 0x00; /* missing in the original bootloader */
 #endif
 #endif
 
   // Set up watchdog to trigger after 500ms
   watchdogConfig(WATCHDOG_1S);
 
-  /* Set LED pin as output */
-  //LED_DDR |= _BV(LED);
-
 #ifdef SOFT_UART
   /* Set TX pin as output */
   UART_DDR |= _BV(UART_TX_BIT);
-#endif
-
-#if LED_START_FLASHES > 0
-  /* Flash onboard LED to signal entering of bootloader */
-  flash_led(LED_START_FLASHES * 2);
 #endif
 
   /* Forever loop */
@@ -533,14 +518,6 @@ void putch(char ch) {
 uint8_t getch(void) {
   uint8_t ch;
 
-#ifdef LED_DATA_FLASH
-#ifdef __AVR_ATmega8__
-  //LED_PORT ^= _BV(LED);
-#else
- // LED_PIN |= _BV(LED);
-#endif
-#endif
-
 #ifdef SOFT_UART
   __asm__ __volatile__ (
     "1: sbic  %[uartPin],%[uartBit]\n"  // Wait for start edge
@@ -583,14 +560,6 @@ uint8_t getch(void) {
   ch = UDR0;
 #endif
 
-#ifdef LED_DATA_FLASH
-#ifdef __AVR_ATmega8__
- // LED_PORT ^= _BV(LED);
-#else
-//  LED_PIN |= _BV(LED);
-#endif
-#endif
-
   return ch;
 }
 
@@ -627,21 +596,6 @@ void verifySpace() {
   putch(STK_INSYNC);
 }
 
-#if LED_START_FLASHES > 0
-void flash_led(uint8_t count) {
-  do {
-    TCNT1 = -(F_CPU/(1024*16));
-    TIFR1 = _BV(TOV1);
-    while(!(TIFR1 & _BV(TOV1)));
-#ifdef __AVR_ATmega8__
-  //  LED_PORT ^= _BV(LED);
-#else
-   // LED_PIN |= _BV(LED);
-#endif
-    watchdogReset();
-  } while (--count);
-}
-#endif
 
 // Watchdog functions. These are only safe with interrupts turned off.
 void watchdogReset() {
