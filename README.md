@@ -308,19 +308,10 @@ Question: My Arduino IDE gives me following error message: "Error downloading ..
 Question: I am not using RTC and/or Ethernet built in CONTROLLINO MAXI/MEGA. I am trying to use SPI bus available at pinheader, but it sometimes work and sometimes not. Is there any conflict with RTC chip and Etherent chip connected to the same SPI bus, even if I am not using them?
 
 *Answer: When SS pins PJ2 (RTC) and PJ3 (Wiznet) are not properly handled, it may happen that the floating pin is recognized as a valid chip select signal and the RTC chip or Wiznet chip is accidentally connected to SPI bus - MISO signal.*
-*The solution is quite easy - if a user wants to use the SPI bus signals as GPIOs at the pin header, s/he must properly setup the Slave Select signals for the RTC and Wiznet.* 
-*This may cause confusion of the SPI communication at the pinheader and also strange voltages at MISO (pin header X1) when using it as GPIO.*
  
-*These three lines in your sketch setup function should do the job:*
+*Call this function prior to usage of the SPI bus:*
 
-`pinMode(CONTROLLINO_RTC_CHIP_SELECT, OUTPUT);`
-
-`pinMode(CONTROLLINO_ETHERNET_CHIP_SELECT, OUTPUT);`
-
-`digitalWrite(CONTROLLINO_RTC_CHIP_SELECT, LOW);       // inactive`
-
-`digitalWrite(CONTROLLINO_ETHERNET_CHIP_SELECT, HIGH); // inactive`
-
+`Controllino_RTC_init();`
  
 **8. CONTROLLINO MINI A6, A7 inputs**
 
