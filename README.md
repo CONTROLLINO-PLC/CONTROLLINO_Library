@@ -149,7 +149,7 @@ It should be added automatically with the `#include <Controllino.h>`.
 `char Controllino_RTC_init()`
 
 ##### Sets time and date to the RTC chip (RV-2123)
- *  See [RTC chip manual](http://www.microcrystal.com/images/_Product-Documentation/02_Oscillator_&_RTC_Modules/02_Application_Manual/RV-2123-C2_App-Manual.pdf) for more information.
+ *  See [RTC chip manual](https://www.microcrystal.com/fileadmin/Media/Products/RTC/Datasheet/RV-2123-C2.pdf) for more information.
  *  @param aDay day 01 - 31
  *  @param aWeekDay weekday 00 - 06
  *  @param aMonth month 01 - 12
@@ -162,7 +162,7 @@ It should be added automatically with the `#include <Controllino.h>`.
 `char Controllino_SetTimeDate(unsigned char aDay, unsigned char aWeekDay,unsigned char aMonth, unsigned char aYear, unsigned char aHour, unsigned char aMinute, unsigned char aSecond);`
 
 ##### Reads out the time and date from the RTC chip (RV-2123)
- *  See [RTC chip manual](http://www.microcrystal.com/images/_Product-Documentation/02_Oscillator_&_RTC_Modules/02_Application_Manual/RV-2123-C2_App-Manual.pdf) for more information.
+ *  See [RTC chip manual](https://www.microcrystal.com/fileadmin/Media/Products/RTC/Datasheet/RV-2123-C2.pdf) for more information.
  *  @param aDay pointer to day 01 - 31
  *  @param aWeekDay pointer to weekday 00 - 06
  *  @param aMonth pointer to month 01 - 12
