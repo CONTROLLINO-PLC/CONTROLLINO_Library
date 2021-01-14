@@ -7,7 +7,7 @@ We have prepared a new version of BSP featuring following changes and upgrades:
 * Added information for Arduino IDE to be able to burn the bootloader directly from IDE using Arduino UNO
 
 :exclamation: NEW! :exclamation:
-Please see our [tutorial how to burn the MINI bootloader with Arduino UNO](https://forum.controllino.biz/viewtopic.php?f=6&t=2199) .
+Please see our [tutorial how to burn the MINI bootloader with Arduino UNO](https://community.controllino.com/forums/discussion/burn-mini-bootloader-by-arduino-uno-as-isp/) .
 
 
 If you will face some compilation errors after the update, please check your 
@@ -17,7 +17,7 @@ folder and remove all previous obsolete versions (e.g. 2.0.0, 2.0.1, 3.0.0, 3.0.
 # CONTROLLINO
 
 ### FIRST SOFTWARE OPEN-SOURCE PLC (ARDUINO compatible)
-https://controllino.biz/
+https://controllino.com/
 
 This GitHub repository contains all you need to start with CONTROLLINO devices programming in Arduino IDE.
 * Arduino IDE extension package for Boards Manager
@@ -295,7 +295,7 @@ Question: Loading the Controllino Library into the Arduino 1.6.12 IDE does not s
 
 Question: Is it possible to burn bootloader in Controllino? I want to add possibility for OTA updates by Ethernet.
 
-*Answer: Yes, it is possible. We are fully compatible with Arduino! All ICSP signals are available at the X1 pinheader connector of your CONTROLLINO. See https://controllino.biz/downloads/ for more details. You just need ICSP programmer and six wires to handle that.*
+*Answer: Yes, it is possible. We are fully compatible with Arduino! All ICSP signals are available at the X1 pinheader connector of your CONTROLLINO. See https://www.controllino.com/downloads/#datasheets for more details. You just need ICSP programmer and six wires to handle that.*
 
 **6. Unable to locate (obsolete) hardware description files on GitHub**
 
