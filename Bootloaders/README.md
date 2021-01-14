@@ -1,6 +1,6 @@
 
 :exclamation: NEW! :exclamation:
-Please see our [tutorial how to burn the MINI bootloader with Arduino UNO](https://forum.controllino.biz/viewtopic.php?f=6&t=2199) .
+Please see our [tutorial how to burn the MINI bootloader with Arduino UNO](https://community.controllino.com/forums/discussion/burn-mini-bootloader-by-arduino-uno-as-isp/) .
 
 ## CONTROLLINO customized bootloaders
 * Here you can find our customized bootloaders for all CONTROLLINO variants. Please select your variant, download the hex file and follow the guide.
