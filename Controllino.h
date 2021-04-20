@@ -6,13 +6,13 @@
  *  This header file contains constants, macros and functional prototypes
  *  useful for programming of the CONTROLLINO devices in the Arduino IDE.
  *
- *  https://controllino.biz/
+ *  https://controllino.com/
  *  https://github.com/CONTROLLINO-PLC/CONTROLLINO_Library
  *  https://www.arduino.cc/
  *
  *  @author CONTROLLINO design team
- *  @version   3.0.5
- *  @date      2019-06-20
+ *  @version   3.0.6
+ *  @date      2021-04-20
  *  @bug No known bugs.
  */
 
