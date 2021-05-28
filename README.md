@@ -375,3 +375,43 @@ Explanation: CONTROLLINO boards contain additional pull-down resistors:
 * pin header: 15kΩ
 
 See [issue #26](https://github.com/CONTROLLINO-PLC/CONTROLLINO_Library/issues/26#issuecomment-474915625) for details.
+
+**13. Is it possible to upload a new sketch to CONTROLLINO OTA (Over The Air) so via Ethernet**
+
+Issue: It is needed to upload the new sketch to CONTROLLINO over the network (Ethernet)
+
+*Solution: There are two mainstream solutions for the Arduino OTA remote update*
+
+**_Data transfer is done in sketch context_**
+
+There is a library that supports ArduinoIDE and is in Library Manager.
+ See: https://github.com/jandrassy/ArduinoOTA. There are some requirements, which has to be met for seamless use of this library:
+* User sketch includes a library and accommodates code that broadcasts "Here I am, ready for OTA" and listens on a port for incoming binary
+* UDP broadcast has to be enabled for ArduinoIDE to receive this message
+* When the new binary is coming (from Arduino IDE in the local network) it is stored in an unused part of the program flash memory (“second partition”), so the memory has to be at least 64 kB.
+* A modified OptiBoot bootloader is needed to flash binary file from this "second partition".
+
+**_Data transfer is done in bootloader context_**
+
+There are several libraries for Arduino boards that implement a TFTP server. 
+
+See: 
+https://github.com/per1234/Ariadne-Bootloader
+
+https://github.com/loathingKernel/ariadne-bootloader
+
+https://github.com/codebndr/Ariadne-Bootloader
+
+Also for all these libraries, there are some requirements, which has to be met for seamless use: 
+* User sketch or the device itself has to be commanded to reset into bootloader
+* The bootloader starts the TFTP server, so TFTP protocol has to be enabled on the network
+* Sketch has to be in binary format
+
+Both of these solutions depend on communication via Local Area Network so, if an update over the internet is needed, there has to be some kind of Gateway, which will do the update itself.
+See:
+![OTA_Gateway](images/OTA_Gateway.png)
+
+There is also another option. Use solution 1, but implement a periodical check of some HTTP server (Please note, that CONTROLLINO hardware is not capable of SSL/TLS encryption, so no HTTPS is possible).	In a case of a new FW available it downloads it to the second partition and resets the device. Then the modified OptiBoot bootloader is needed to flash binary file from second partition.
+
+
+:exclamation:Special bootloaders mentioned above do NOT work with CONTROLLINO HW out of the box. 
