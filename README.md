@@ -415,3 +415,13 @@ There is also another option. Use solution 1, but implement a periodical check o
 
 
 :exclamation:Special bootloaders mentioned above do NOT work with CONTROLLINO HW out of the box. 
+
+**14. Support in Arduino IDE 2.0, Arduino CLI and IDE running on MAC OS 10.15 and newer**
+
+Issue: Compilation error in some environments.
+
+*Solution: Use of appropriate versions of gcc tools.*
+
+Since 28 June 2021, the tools dependencies in the HW package definition has been changed. 
+The new installation of the Board support package should be working even on Arduino IDE 2.0, Arduino CLI and IDE under MAC OS.
+If you still encounter a "Compilation Error" please try to reinstall Board support package.
