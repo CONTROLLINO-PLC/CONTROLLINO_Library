@@ -216,6 +216,14 @@ It should be added automatically with the `#include <Controllino.h>`.
  
 `char Controllino_PrintTimeAndDate( void )`
 
+##### Sets the alarm function on the RTC chip
+*  @return Returns 0 when succeeded, or -1 if the RTC library was not initialized before
+`Controllino_SetAlarm(unsigned char aHour, unsigned char aMinute)`
+
+##### Clears the alarm function on the RTC chip
+*  @return Returns 0 when succeeded, or -1 if the RTC library was not initialized before
+`Controllino_ClearAlarm( void )`
+
 
 ### RS485 functions
 
