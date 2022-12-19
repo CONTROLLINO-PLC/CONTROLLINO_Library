@@ -39,20 +39,18 @@
   (Check https://github.com/CONTROLLINO-PLC/CONTROLLINO_Library for the latest CONTROLLINO related software stuff.)
 */
 
+// Serial configuration settings
+#define SerialBaudRate 19200
+#define SerialConfig SERIAL_8N1 // 8 bits de datos parity:even 1 stop bit
+
 // This MACRO defines Modbus slave address.
 // For any Modbus slave devices are reserved addresses in the range from 1 to 247.
 // Important note only address 0 is reserved for a Modbus master device!
 #define SlaveModbusAdd  1
 
-// This MACRO defines number of the comport that is used for RS 485 interface.
-// For MAXI and MEGA RS485 is reserved UART Serial3.
-#define RS485Serial     3
-
 // The object ControllinoModbuSlave of the class Modbus is initialized with three parameters.
 // The first parametr specifies the address of the Modbus slave device.
-// The second parameter specifies type of the interface used for communication between devices - in this sketch is used RS485.
-// The third parameter can be any number. During the initialization of the object this parameter has no effect.
-Modbus ControllinoModbusSlave(SlaveModbusAdd, RS485Serial, 0);
+Modbus ControllinoModbusSlave(SlaveModbusAdd); // Default serial interface is Serial3 where is located the RS485 on MAXI and MEGA models.
 
 // This uint16 array specified internal registers in the Modbus slave device.
 // Each Modbus device has particular internal registers that are available for the Modbus master.
@@ -80,7 +78,7 @@ void setup()
     pinMode(CONTROLLINO_D0, INPUT);     // Set the pin CONTROLLINO_D0 as input - Read digital value at the pin D0.
     pinMode(CONTROLLINO_A0, INPUT);     // Set the pin CONTROLLINO_A0 as input - Read analog value at the pin A0
 
-    ControllinoModbusSlave.begin( 19200 );  // Start the communication over the ModbusRTU protocol. Baund rate is set at 19200.
+    ControllinoModbusSlave.begin(SerialBaudRate, SerialConfig); // Init Modbus RTU with the defined serial configs
 }
 
 // The loop function runs over and over again forever
