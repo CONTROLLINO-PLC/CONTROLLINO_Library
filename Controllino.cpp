@@ -445,7 +445,7 @@ char Controllino_SetTimeDateStrings(const char* date, const char* time)
 }
 
 char Controllino_SetAlarm(unsigned char *aHour, unsigned char *aMinute) {
-	
+
 	unsigned char TimeDate [2]={aMinute,aHour}; //we use a zero in the middle of the array as thats how the data are stored inside the the chip
 	unsigned char i,a,b,temp;//Help variable i is used to control for cycle and a,b are used to prepare time data for the RTC chip.
 	unsigned char SPISetting; // variable to hold SPI setting
@@ -461,7 +461,7 @@ char Controllino_SetAlarm(unsigned char *aHour, unsigned char *aMinute) {
 
 		for(i = 0; i < 2;i++)
 		{
-			
+
 			if (i == 0)    //minutes
 			{
 				b = TimeDate[i]/40; //get the 40s
@@ -476,13 +476,13 @@ char Controllino_SetAlarm(unsigned char *aHour, unsigned char *aMinute) {
 				b = b+temp;
 				a = a%10; // get the rest
 			}
-			
+
 			if (i == 1)    //hours
 			{
 				b = TimeDate[i]/10; //get the 10s
 				b = b<<4;
 				a = TimeDate[i]%10; // get the rest
-				
+
 			}
 				TimeDate[i]= a + b;   
 				Controllino_SetRTCSS(HIGH);
@@ -517,7 +517,15 @@ char Controllino_ClearAlarm( void ) {
 		SPI.setDataMode(SPI_MODE0);
 		Controllino_SetRTCSS(HIGH);
 		SPI.transfer(0x11); //0x11 is address for control2 write 
-		SPI.transfer(B11110101); // clear alarms
+		SPI.transfer(B00010000); // clear alarms
+		Controllino_SetRTCSS(LOW);
+		Controllino_SetRTCSS(HIGH);
+		SPI.transfer(0x19); //0x11 is address for alarm-mins write 
+		SPI.transfer(B10000000); // clear alarms
+		Controllino_SetRTCSS(LOW);
+		Controllino_SetRTCSS(HIGH);
+		SPI.transfer(0x1A); //0x1A is address for alarm-hours write 
+		SPI.transfer(B10000000); // clear alarms
 		Controllino_SetRTCSS(LOW);
 		//Return the SPI settings to previous state
 		SPCR = SPISetting;
@@ -528,7 +536,6 @@ char Controllino_ClearAlarm( void ) {
 		return -1; //RTC chip was initialized properly, return -1
 	}
 }
-
 
 #if defined(CONTROLLINO_MAXI) || defined(CONTROLLINO_MEGA)
 
