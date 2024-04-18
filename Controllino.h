@@ -1131,7 +1131,6 @@ char Controllino_SetRTCSS(char mode);
  *  See https://www.microcrystal.com/fileadmin/Media/Products/RTC/App.Manual/RV-2123-C2_App-Manual.pdf
  *  for more information.
  *
- *  @param aHour hours 01 - 12, or 00 - 23 (depending of 12H/24H mode)
  *  @param aMinute minutes 00 - 59
  *  
  *  @return Returns 0 when succeeded, or -1 if the RTC library was not initialized before
