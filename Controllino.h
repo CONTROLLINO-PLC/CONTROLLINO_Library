@@ -1128,15 +1128,15 @@ char Controllino_SetRTCSS(char mode);
 
 /** @brief Configures an alarm on the RTC chip (RV-2123)
  *
- *  See http://www.microcrystal.com/images/_Product-Documentation/02_Oscillator_&_RTC_Modules/02_Application_Manual/RV-2123-C2_App-Manual.pdf
+ *  See https://www.microcrystal.com/fileadmin/Media/Products/RTC/App.Manual/RV-2123-C2_App-Manual.pdf
  *  for more information.
  *
- *  @param aHour pointer to hours 01 - 12, or 00 - 23 (depending of 12H/24H mode)
- *  @param aMinute pointer to minutes 00 - 59
+ *  @param aHour hours 01 - 12, or 00 - 23 (depending of 12H/24H mode)
+ *  @param aMinute minutes 00 - 59
  *  
  *  @return Returns 0 when succeeded, or -1 if the RTC library was not initialized before
  */
-char Controllino_SetAlarm(unsigned char *aHour, unsigned char *aMinute);
+char Controllino_SetMinuteAlarm( unsigned char aMinute );
 
 
 /** @brief Clears alarm interrupt on the RTC chip (RV-2123)
