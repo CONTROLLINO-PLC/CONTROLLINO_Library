@@ -274,7 +274,7 @@
           "architecture": "avr",
           "version": "3.1.2",
           "category": "Contributed",
-          "url": "https://github.com/CONTROLLINO-PLC/CONTROLLINO_Library/raw/adding-ArduinoRS485-support/Boards/ControllinoHW.zip",
+          "url": "https://github.com/CONTROLLINO-PLC/CONTROLLINO_Library/raw/master/Boards/ControllinoHW.zip",
           "archiveFileName": "ControllinoHW.zip",
           "checksum": "SHA-256:edeeaa571c68ee44e452b21c5e90ba4ebde746f49921757336719a1b620699d1",
           "size": "65884",
