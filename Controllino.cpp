@@ -18,9 +18,11 @@
 #include <stdint.h>
 
 boolean isRTCInitialized = false;
+unsigned char gChpiSelect = 0;
 
 char Controllino_RTC_init(unsigned char aChipSelect)
 {
+	gChpiSelect = aChipSelect;	/* to prevent compiler warning */
 	return Controllino_RTC_init();
 }
 
@@ -444,10 +446,10 @@ char Controllino_SetTimeDateStrings(const char* date, const char* time)
     return Controllino_SetTimeDate(d,dayOfTheWeek(yOff, m, d),m,yOff,hh,mm,ss);
 }
 
-char Controllino_SetAlarm(unsigned char *aHour, unsigned char *aMinute) {
+char Controllino_SetMinuteAlarm( unsigned char aMinute ) {
 
-	unsigned char TimeDate [2]={aMinute,aHour}; //we use a zero in the middle of the array as thats how the data are stored inside the the chip
-	unsigned char i,a,b,temp;//Help variable i is used to control for cycle and a,b are used to prepare time data for the RTC chip.
+	unsigned char a,b,temp;
+
 	unsigned char SPISetting; // variable to hold SPI setting
 
 	if (isRTCInitialized)
@@ -458,40 +460,28 @@ char Controllino_SetAlarm(unsigned char *aHour, unsigned char *aMinute) {
 		SPI.begin();
 		SPI.setBitOrder(MSBFIRST);
 		SPI.setDataMode(SPI_MODE0);
+		
+		b = aMinute/40; //get the 40s
+		b = b<<6;
+		a = aMinute%40; // get the rest
+		temp = a/20; //get the 20s
+		temp = temp<<5;
+		b = b+temp;
+		a = a%20; // get the rest
+		temp = a/10; //get the 10s
+		temp = temp<<4;
+		b = b+temp;
+		a = a%10; // get the rest
+		aMinute = a + b;
 
-		for(i = 0; i < 2;i++)
-		{
-
-			if (i == 0)    //minutes
-			{
-				b = TimeDate[i]/40; //get the 40s
-				b = b<<6;
-				a = TimeDate[i]%40; // get the rest
-				temp = a/20; //get the 20s
-				temp = temp<<5;
-				b = b+temp;
-				a = a%20; // get the rest
-				temp = a/10; //get the 10s
-				temp = temp<<4;
-				b = b+temp;
-				a = a%10; // get the rest
-			}
-			
-			if (i == 1)    //hours
-			{
-				b = TimeDate[i]/10; //get the 10s
-				b = b<<4;
-				a = TimeDate[i]%10; // get the rest
-			}
-				TimeDate[i]= a + b;   
-				Controllino_SetRTCSS(HIGH);
-				SPI.transfer(i + 0x19); //0x19 is starting address for write 
-				SPI.transfer(TimeDate[i]);
-				Controllino_SetRTCSS(LOW);
-			}
 		Controllino_SetRTCSS(HIGH);
-		SPI.transfer(0x11); //0x11 is starting address for control2 write 
-		SPI.transfer(B00010010); // enable alarms
+		SPI.transfer( 0x19 ); // Write minutes register address 
+		SPI.transfer(aMinute);
+		Controllino_SetRTCSS(LOW);
+		
+		Controllino_SetRTCSS(HIGH);
+		SPI.transfer( 0x11 ); // Write Control_2 register address 
+		SPI.transfer(0x02);  // AIE = 1
 		Controllino_SetRTCSS(LOW);
 		//Return the SPI settings to previous state
 		SPCR = SPISetting;
@@ -516,15 +506,11 @@ char Controllino_ClearAlarm( void ) {
 		SPI.setDataMode(SPI_MODE0);
 		Controllino_SetRTCSS(HIGH);
 		SPI.transfer(0x11); //0x11 is address for control2 write 
-		SPI.transfer(B00010000); // clear alarms
+		SPI.transfer(0x00); // clear alarms and interrupts 
 		Controllino_SetRTCSS(LOW);
 		Controllino_SetRTCSS(HIGH);
 		SPI.transfer(0x19); //0x11 is address for alarm-mins write 
-		SPI.transfer(B10000000); // clear alarms
-		Controllino_SetRTCSS(LOW);
-		Controllino_SetRTCSS(HIGH);
-		SPI.transfer(0x1A); //0x1A is address for alarm-hours write 
-		SPI.transfer(B10000000); // clear alarms
+		SPI.transfer(B10000000); // disable alarms
 		Controllino_SetRTCSS(LOW);
 		//Return the SPI settings to previous state
 		SPCR = SPISetting;
