@@ -318,7 +318,7 @@
           "architecture": "avr",
           "version": "3.1.3",
           "category": "Contributed",
-          "url": "https://github.com/CONTROLLINO-PLC/CONTROLLINO_Library/raw/master/Boards/ControllinoHW.zip",
+          "url": "https://github.com/CONTROLLINO-PLC/CONTROLLINO_Library/raw/add-libraries-to-BSP/Boards/ControllinoHW.zip",
           "archiveFileName": "ControllinoHW.zip",
           "checksum": "SHA-256:db0b4a94eb0a0cd39bfcfab15272a35d825365cb4e46970dfa723b1b6ceba1aa",
           "size": "154035",
