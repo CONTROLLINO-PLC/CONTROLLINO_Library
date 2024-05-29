@@ -38,6 +38,7 @@
   #elif defined(CONTROLLINO_MAXI) 
     #elif defined(CONTROLLINO_MEGA) 
       #elif defined(CONTROLLINO_MAXI_AUTOMATION) 
+        #elif defined(CONTROLLINO_MICRO) 
       #else 
         #error Please, select one of the CONTROLLINO variants in Tools->Board
 #endif
@@ -999,193 +1000,196 @@
 
 #endif
 
-/** @brief Initializes RTC library, SPI bus and RTC chip (RV-2123)
- *
- *  @param aChipSelect is ignored. Kept for backwards compatibility only.
- *  
- *  @return Always returns 0
- */
-char Controllino_RTC_init(unsigned char aChipSelect);
+#ifndef CONTROLLINO_MICRO
 
-/** @brief Initializes RTC library, SPI bus and RTC chip (RV-2123)
- *
- *  @return Always returns 0
- */
-char Controllino_RTC_init( void );
+  /** @brief Initializes RTC library, SPI bus and RTC chip (RV-2123)
+   *
+   *  @param aChipSelect is ignored. Kept for backwards compatibility only.
+   *  
+   *  @return Always returns 0
+   */
+  char Controllino_RTC_init(unsigned char aChipSelect);
 
-/** @brief Sets time and date to the RTC chip (RV-2123)
- *
- *  See http://www.microcrystal.com/images/_Product-Documentation/02_Oscillator_&_RTC_Modules/02_Application_Manual/RV-2123-C2_App-Manual.pdf
- *  for more information.
- *
- *  @param aDay day 01 - 31
- *  @param aWeekDay weekday 00 - 06
- *  @param aMonth month 01 - 12
- *  @param aYear year 00 - 99
- *  @param aHour hours 01 - 12, or 00 - 23 (depending of 12H/24H mode)
- *  @param aMinute minutes 00 - 59
- *  @param aSecond seconds 00 - 59
- *  
- *  @return Returns 0 when succeeded, or -1 if the RTC library was not initialized before
- */
-char Controllino_SetTimeDate(unsigned char aDay, unsigned char aWeekDay,unsigned char aMonth, unsigned char aYear, unsigned char aHour, unsigned char aMinute, unsigned char aSecond);
+  /** @brief Initializes RTC library, SPI bus and RTC chip (RV-2123)
+   *
+   *  @return Always returns 0
+   */
+  char Controllino_RTC_init( void );
+	
+  /** @brief Sets time and date to the RTC chip (RV-2123)
+   *
+   *  See http://www.microcrystal.com/images/_Product-Documentation/02_Oscillator_&_RTC_Modules/02_Application_Manual/RV-2123-C2_App-Manual.pdf
+   *  for more information.
+   *
+   *  @param aDay day 01 - 31
+   *  @param aWeekDay weekday 00 - 06
+   *  @param aMonth month 01 - 12
+   *  @param aYear year 00 - 99
+   *  @param aHour hours 01 - 12, or 00 - 23 (depending of 12H/24H mode)
+   *  @param aMinute minutes 00 - 59
+   *  @param aSecond seconds 00 - 59
+   *  
+   *  @return Returns 0 when succeeded, or -1 if the RTC library was not initialized before
+   */
+  char Controllino_SetTimeDate(unsigned char aDay, unsigned char aWeekDay,unsigned char aMonth, unsigned char aYear, unsigned char aHour, unsigned char aMinute, unsigned char aSecond);
+	
+  /** @brief Sets time and date to the RTC chip (RV-2123)
+   *
+   *  See http://www.microcrystal.com/images/_Product-Documentation/02_Oscillator_&_RTC_Modules/02_Application_Manual/RV-2123-C2_App-Manual.pdf
+   *  for more information.
+   *
+   *  @param aDate string including the date - use __DATE__ for a date of the compilation
+   *  @param aTime string including the time - use __TIME__ for a time of the compilation
+   *  
+   *  @return Returns 0 when succeeded, or -1 if the RTC library was not initialized before
+   */
+  char Controllino_SetTimeDateStrings(const char* aDate, const char* aTime);
+	
+  /** @brief Reads out the time and date from the RTC chip (RV-2123)
+   *
+   *  See http://www.microcrystal.com/images/_Product-Documentation/02_Oscillator_&_RTC_Modules/02_Application_Manual/RV-2123-C2_App-Manual.pdf
+   *  for more information.
+   *
+   *  @param aDay pointer to day 01 - 31
+   *  @param aWeekDay pointer to weekday 00 - 06
+   *  @param aMonth pointer to month 01 - 12
+   *  @param aYear pointer to year 00 - 99
+   *  @param aHour pointer to hours 01 - 12, or 00 - 23 (depending of 12H/24H mode)
+   *  @param aMinute pointer to minutes 00 - 59
+   *  @param aSecond pointer to seconds 00 - 59
+   *  
+   *  @return Returns 0 when succeeded, or -1 if the RTC library was not initialized before
+   */
+   char Controllino_ReadTimeDate(unsigned char *aDay, unsigned char *aWeekDay, unsigned char *aMonth, unsigned char *aYear, unsigned char *aHour, unsigned char *aMinute, unsigned char *aSecond);
 
-/** @brief Sets time and date to the RTC chip (RV-2123)
- *
- *  See http://www.microcrystal.com/images/_Product-Documentation/02_Oscillator_&_RTC_Modules/02_Application_Manual/RV-2123-C2_App-Manual.pdf
- *  for more information.
- *
- *  @param aDate string including the date - use __DATE__ for a date of the compilation
- *  @param aTime string including the time - use __TIME__ for a time of the compilation
- *  
- *  @return Returns 0 when succeeded, or -1 if the RTC library was not initialized before
- */
-char Controllino_SetTimeDateStrings(const char* aDate, const char* aTime);
+  /** @brief Reads out the day value from the RTC chip (RV-2123)
+   *
+   *  @return Returns day 01 - 31, or -1 if the RTC library was not initialized before
+   */
+   char Controllino_GetDay( void );
 
-/** @brief Reads out the time and date from the RTC chip (RV-2123)
- *
- *  See http://www.microcrystal.com/images/_Product-Documentation/02_Oscillator_&_RTC_Modules/02_Application_Manual/RV-2123-C2_App-Manual.pdf
- *  for more information.
- *
- *  @param aDay pointer to day 01 - 31
- *  @param aWeekDay pointer to weekday 00 - 06
- *  @param aMonth pointer to month 01 - 12
- *  @param aYear pointer to year 00 - 99
- *  @param aHour pointer to hours 01 - 12, or 00 - 23 (depending of 12H/24H mode)
- *  @param aMinute pointer to minutes 00 - 59
- *  @param aSecond pointer to seconds 00 - 59
- *  
- *  @return Returns 0 when succeeded, or -1 if the RTC library was not initialized before
- */
-char Controllino_ReadTimeDate(unsigned char *aDay, unsigned char *aWeekDay, unsigned char *aMonth, unsigned char *aYear, unsigned char *aHour, unsigned char *aMinute, unsigned char *aSecond);
+  /** @brief Reads out the weekday value from the RTC chip (RV-2123)
+   *
+   *  @return Returns weekday 00 - 06, or -1 if the RTC library was not initialized before
+   */
+   char Controllino_GetWeekDay( void );
 
-/** @brief Reads out the day value from the RTC chip (RV-2123)
- *
- *  @return Returns day 01 - 31, or -1 if the RTC library was not initialized before
- */
-char Controllino_GetDay( void );
+  /** @brief Reads out the month value from the RTC chip (RV-2123)
+   *
+   *  @return Returns month 01 - 12, or -1 if the RTC library was not initialized before
+   */
+   char Controllino_GetMonth( void );
 
-/** @brief Reads out the weekday value from the RTC chip (RV-2123)
- *
- *  @return Returns weekday 00 - 06, or -1 if the RTC library was not initialized before
- */
-char Controllino_GetWeekDay( void );
+  /** @brief Reads out the year value from the RTC chip (RV-2123)
+   *
+   *  @return Returns year 00 - 99, or -1 if the RTC library was not initialized before
+   */
+   char Controllino_GetYear( void );
 
-/** @brief Reads out the month value from the RTC chip (RV-2123)
- *
- *  @return Returns month 01 - 12, or -1 if the RTC library was not initialized before
- */
-char Controllino_GetMonth( void );
+  /** @brief Reads out the hours value from the RTC chip (RV-2123)
+   *
+   *  @return Returns hours 01 - 12, or 00 - 23 (depending of 12H/24H mode), or -1 if the RTC library was not initialized before
+   */
+   char Controllino_GetHour( void );
 
-/** @brief Reads out the year value from the RTC chip (RV-2123)
- *
- *  @return Returns year 00 - 99, or -1 if the RTC library was not initialized before
- */
-char Controllino_GetYear( void );
+   /** @brief Reads out the minutes value from the RTC chip (RV-2123)
+    *
+    *  @return Returns minutes 00 - 59, or -1 if the RTC library was not initialized before
+    */
+   char Controllino_GetMinute( void );
 
-/** @brief Reads out the hours value from the RTC chip (RV-2123)
- *
- *  @return Returns hours 01 - 12, or 00 - 23 (depending of 12H/24H mode), or -1 if the RTC library was not initialized before
- */
-char Controllino_GetHour( void );
+   /** @brief Reads out the seconds value from the RTC chip (RV-2123)
+    *
+    *  @return Returns seconds 00 - 59, or -1 if the RTC library was not initialized before
+    */
+   char Controllino_GetSecond( void );
 
-/** @brief Reads out the minutes value from the RTC chip (RV-2123)
- *
- *  @return Returns minutes 00 - 59, or -1 if the RTC library was not initialized before
- */
-char Controllino_GetMinute( void );
+   /** @brief Reads time and date from RTC chip and prints it on serial line
+    *
+    *  This function expects that the serial line was initialized before calling it.
+    *  Format is DD/MM/YY   HH:MM:SS
+    *
+    *  @return Returns seconds 0, or -1 if the RTC library was not initialized before
+    */
+   char Controllino_PrintTimeAndDate( void );
 
-/** @brief Reads out the seconds value from the RTC chip (RV-2123)
- *
- *  @return Returns seconds 00 - 59, or -1 if the RTC library was not initialized before
- */
-char Controllino_GetSecond( void );
+   /** @brief Initialization of the SPI slave select pin for the RTC chip (RV-2123)
+    *
+    *  For experienced users only.
+    *
+    *  @return Returns 0 when succeeded, or -2 if there is not selected proper CONTROLLINO board
+    */
+   char Controllino_RTCSSInit( void );
 
-/** @brief Reads time and date from RTC chip and prints it on serial line
- *
- *  This function expects that the serial line was initialized before calling it.
- *  Format is DD/MM/YY   HH:MM:SS
- *
- *  @return Returns seconds 0, or -1 if the RTC library was not initialized before
- */
-char Controllino_PrintTimeAndDate( void );
+   /** @brief Control of SPI slave select pin for the RTC chip (RV-2123)
+    *
+    *  @param mode 0 for RTC chip SPI bus disable, 1 for RTC SPI bus enable
+    *
+    *  @return Returns 0 when succeeded, -1 for unsupported mode, or -2 if there is not selected proper CONTROLLINO board
+    */
+   char Controllino_SetRTCSS(char mode);
 
-/** @brief Initialization of the SPI slave select pin for the RTC chip (RV-2123)
- *
- *  For experienced users only.
- *
- *  @return Returns 0 when succeeded, or -2 if there is not selected proper CONTROLLINO board
- */
-char Controllino_RTCSSInit( void );
-
-/** @brief Control of SPI slave select pin for the RTC chip (RV-2123)
- *
- *  @param mode 0 for RTC chip SPI bus disable, 1 for RTC SPI bus enable
- *
- *  @return Returns 0 when succeeded, -1 for unsupported mode, or -2 if there is not selected proper CONTROLLINO board
- */
-char Controllino_SetRTCSS(char mode);
-
-/** @brief Configures an alarm on the RTC chip (RV-2123)
- *
- *  See https://www.microcrystal.com/fileadmin/Media/Products/RTC/App.Manual/RV-2123-C2_App-Manual.pdf
- *  for more information.
- *
- *  @param aMinute minutes 00 - 59
- *  
- *  @return Returns 0 when succeeded, or -1 if the RTC library was not initialized before
- */
-char Controllino_SetMinuteAlarm( unsigned char aMinute );
+   /** @brief Configures an alarm on the RTC chip (RV-2123)
+    *
+    *  See https://www.microcrystal.com/fileadmin/Media/Products/RTC/App.Manual/RV-2123-C2_App-Manual.pdf
+    *  for more information.
+    *
+    *  @param aMinute minutes 00 - 59
+    *  
+    *  @return Returns 0 when succeeded, or -1 if the RTC library was not initialized before
+    */
+   char Controllino_SetMinuteAlarm( unsigned char aMinute );
 
 
-/** @brief Clears alarm interrupt on the RTC chip (RV-2123)
- *
- *  @return Returns 0 when succeeded, or -1 if the RTC library was not initialized before
- */
-char Controllino_ClearAlarm( void );
+   /** @brief Clears alarm interrupt on the RTC chip (RV-2123)
+    *
+    *  @return Returns 0 when succeeded, or -1 if the RTC library was not initialized before
+    */
+   char Controllino_ClearAlarm( void );
+#endif
 
 #if defined(CONTROLLINO_MAXI) || defined(CONTROLLINO_MEGA)
-/** @brief Initialization of the RS485 bus
- *
- *  Serial3 still needs to be initialized separately. This only inits RE and DE pins.
- *
- *  @return Always returns 0 
- */
-char Controllino_RS485Init( void );
+  /** @brief Initialization of the RS485 bus
+   *
+   *  Serial3 still needs to be initialized separately. This only inits RE and DE pins.
+   *
+   *  @return Always returns 0 
+   */
+  char Controllino_RS485Init( void );
 
-/** @brief Initialization of the RS485 bus with baudrate
- *
- *  @return Always returns 0 
- */
-char Controllino_RS485Init( long aBaudrate );
+  /** @brief Initialization of the RS485 bus with baudrate
+   *
+   *  @return Always returns 0 
+   */
+  char Controllino_RS485Init( long aBaudrate );
 
-/** @brief Enable RS485 bus trasmission 
- *
- *  @return void
- */
-void Controllino_RS485TxEnable( void );
+  /** @brief Enable RS485 bus trasmission 
+   *
+   *  @return void
+   */
+  void Controllino_RS485TxEnable( void );
 
-/** @brief Enable RS485 bus reception 
- *
- *  @return void
- */
-void Controllino_RS485RxEnable( void );
+  /** @brief Enable RS485 bus reception 
+   *
+   *  @return void
+   */
+  void Controllino_RS485RxEnable( void );
 
-/** @brief Control of RS485 bus RE signal 
- *
- *  @param mode 0 for RS485 Receive Enable Active, 1 for Receive Enable Inactive 
- *
- *  @return Returns 0 when succeeded, -1 for unsupported mode
- */
-char Controllino_SwitchRS485RE(char mode);
+  /** @brief Control of RS485 bus RE signal 
+   *
+   *  @param mode 0 for RS485 Receive Enable Active, 1 for Receive Enable Inactive 
+   *
+   *  @return Returns 0 when succeeded, -1 for unsupported mode
+   */
+  char Controllino_SwitchRS485RE(char mode);
 
-/** @brief Control of RS485 bus DE signal 
- *
- *  @param mode 0 for RS485 Data transmission Enable Inactive, 1 for Data transmission Enable Active
- *
- *  @return Returns 0 when succeeded, -1 for unsupported mode
- */
-char Controllino_SwitchRS485DE(char mode);
+  /** @brief Control of RS485 bus DE signal 
+   *
+   *  @param mode 0 for RS485 Data transmission Enable Inactive, 1 for Data transmission Enable Active
+   *
+   *  @return Returns 0 when succeeded, -1 for unsupported mode
+   */
+  char Controllino_SwitchRS485DE(char mode);
 
 #endif
 
