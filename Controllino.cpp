@@ -13,6 +13,7 @@
  *  @bug No known bugs.
  */
 
+#ifndef CONTROLLINO_MICRO
 
 #include "Controllino.h"
 #include <stdint.h>
@@ -649,3 +650,5 @@ char Controllino_SetRTCSS(char mode)
 	#endif
   	return -2; // No Controllino board is selected
 }
+
+#endif /* CONTROLLINO MICRO */
