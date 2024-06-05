@@ -13,9 +13,10 @@
  *  @bug No known bugs.
  */
 
-
 #include "Controllino.h"
 #include <stdint.h>
+
+#ifndef CONTROLLINO_MICRO
 
 boolean isRTCInitialized = false;
 unsigned char gChpiSelect = 0;
@@ -649,3 +650,5 @@ char Controllino_SetRTCSS(char mode)
 	#endif
   	return -2; // No Controllino board is selected
 }
+
+#endif /* CONTROLLINO MICRO */
