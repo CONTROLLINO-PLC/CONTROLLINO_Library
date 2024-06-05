@@ -13,10 +13,10 @@
  *  @bug No known bugs.
  */
 
-#ifndef CONTROLLINO_MICRO
-
 #include "Controllino.h"
 #include <stdint.h>
+
+#ifndef CONTROLLINO_MICRO
 
 boolean isRTCInitialized = false;
 unsigned char gChpiSelect = 0;
