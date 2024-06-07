@@ -11,9 +11,7 @@
  *  https://www.arduino.cc/
  *
  *  @author CONTROLLINO design team
- *  @version   3.0.7
- *  @date      2021-04-21
- *  @bug No known bugs.
+ *  @version   3.0.8
  */
 
 
